@@ -9,16 +9,16 @@ export const VenuesSection: React.FC = () => {
   return (
     <section
       id="venues"
-      className="py-6 sm:py-10 px-3 sm:px-6 max-w-5xl mx-auto scroll-mt-20 sm:scroll-mt-24"
+      className="py-12 sm:py-20 px-3 sm:px-6 max-w-6xl mx-auto scroll-mt-20 sm:scroll-mt-28"
     >
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-30px" }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-6 sm:mb-8"
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-10 sm:mb-12"
       >
-        <div className="flex items-center justify-center gap-2 text-gold-600 font-cinzel text-xs font-semibold tracking-widest uppercase mb-1.5">
+        <div className="flex items-center justify-center gap-2 text-gold-600 font-cinzel text-xs font-semibold tracking-widest uppercase mb-2">
           <MapPin className="w-4 h-4" />
           <span>Locations &amp; Navigation</span>
         </div>
@@ -27,16 +27,16 @@ export const VenuesSection: React.FC = () => {
           Venues &amp; Directions
         </h2>
 
-        <GoldDivider className="my-2" />
+        <GoldDivider className="my-3" />
 
-        <p className="font-sans text-xs sm:text-sm text-[#5C5251] max-w-md mx-auto">
+        <p className="font-sans text-xs sm:text-sm text-[#5C5251] max-w-lg mx-auto">
           We look forward to welcoming you to all our celebrations. Tap any venue below for
           verified turn-by-turn directions via Google Maps.
         </p>
       </motion.div>
 
       {/* 3 Venue Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-7">
         {/* 1. Engagement Venue */}
         <VenueCard
           category="1. Engagement Venue"

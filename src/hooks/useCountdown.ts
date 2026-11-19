@@ -13,8 +13,7 @@ export function calculateTimeRemaining(
   targetTimestampMs: number,
   currentTimestampMs: number = Date.now()
 ): CountdownState {
-  const now = currentTimestampMs;
-  const diff = targetTimestampMs - now;
+  const diff = targetTimestampMs - currentTimestampMs;
 
   if (diff <= 0) {
     return {
