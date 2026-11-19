@@ -6,11 +6,13 @@ export interface BackgroundMusicState {
   toggleMusic: () => void;
   playMusic: () => void;
   pauseMusic: () => void;
+  restartMusic: () => void;
 }
 
 /**
- * Background melody player hook adhering to browser autoplay policies.
- * Starts playback immediately on initial landing or on the first user interaction.
+ * Background melody player hook for Golden Brown (Slowed Tune).
+ * Starts playback immediately on the landing envelope screen or first touch/click,
+ * and resets to the beginning on every page refresh or intro replay.
  */
 export function useBackgroundMusic(): BackgroundMusicState {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -25,15 +27,16 @@ export function useBackgroundMusic(): BackgroundMusicState {
     try {
       isMutedInSession = sessionStorage.getItem("wedding_music_muted") === "true";
     } catch {
-      // Ignore in restricted environments
+      // Ignore
     }
     userMutedRef.current = isMutedInSession;
 
     const musicUrl = EVENT_CONFIG.features.backgroundMusicUrl || "/audio/golden-brown.mp3";
     const audio = new Audio(musicUrl);
     audio.loop = true;
-    audio.volume = 0.4;
+    audio.volume = 0.45;
     audio.preload = "auto";
+    audio.currentTime = 0; // Always start from 0:00 on fresh page load
     audioRef.current = audio;
 
     const handlePlay = () => setIsPlaying(true);
@@ -50,11 +53,11 @@ export function useBackgroundMusic(): BackgroundMusicState {
           setIsPlaying(true);
         })
         .catch(() => {
-          // Browser requires user gesture before allowing audio playback
+          // Awaiting user gesture
         });
     }
 
-    // 2. Unlock immediately on first touch, click, scroll or keypress
+    // 2. Unlock immediately on the very first touch, pointerdown, click or scroll
     const unlockAndPlay = () => {
       if (userMutedRef.current) return;
       if (audioRef.current && audioRef.current.paused) {
@@ -64,7 +67,7 @@ export function useBackgroundMusic(): BackgroundMusicState {
             setIsPlaying(true);
           })
           .catch(() => {
-            // Still waiting for gesture
+            // Awaiting explicit user click
           });
       }
     };
@@ -103,7 +106,7 @@ export function useBackgroundMusic(): BackgroundMusicState {
         setIsPlaying(true);
       })
       .catch((err) => {
-        console.warn("[BackgroundMusic] Playback prevented:", err);
+        console.warn("[BackgroundMusic] Playback error:", err);
       });
   }, []);
 
@@ -120,6 +123,26 @@ export function useBackgroundMusic(): BackgroundMusicState {
     setIsPlaying(false);
   }, []);
 
+  const restartMusic = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = 0; // Rewind to the very beginning
+    userMutedRef.current = false;
+    try {
+      sessionStorage.removeItem("wedding_music_muted");
+    } catch {
+      // Fallback
+    }
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        // Will be triggered by gesture
+      });
+  }, []);
+
   const toggleMusic = useCallback(() => {
     if (isPlaying) {
       pauseMusic();
@@ -128,5 +151,5 @@ export function useBackgroundMusic(): BackgroundMusicState {
     }
   }, [isPlaying, pauseMusic, playMusic]);
 
-  return { isPlaying, toggleMusic, playMusic, pauseMusic };
+  return { isPlaying, toggleMusic, playMusic, pauseMusic, restartMusic };
 }

@@ -20,6 +20,7 @@ export const App: React.FC = () => {
     isPlaying: isPlayingMusic,
     toggleMusic: handleToggleMusic,
     playMusic: handlePlayMusic,
+    restartMusic: handleRestartMusic,
   } = useBackgroundMusic();
 
   const [showIntro, setShowIntro] = useState<boolean>(() => {
@@ -30,7 +31,7 @@ export const App: React.FC = () => {
     return true;
   });
 
-  // Always reset scroll to the beginning after page reload / refresh
+  // Always reset scroll to the beginning after page reload / refresh and restart song from the beginning
   useEffect(() => {
     if (typeof window !== "undefined") {
       if ("scrollRestoration" in window.history) {
@@ -38,7 +39,8 @@ export const App: React.FC = () => {
       }
       window.scrollTo(0, 0);
     }
-  }, []);
+    handleRestartMusic();
+  }, [handleRestartMusic]);
 
   const handleIntroComplete = () => {
     if (typeof window !== "undefined") {
@@ -51,6 +53,7 @@ export const App: React.FC = () => {
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "instant" });
     }
+    handleRestartMusic();
     setShowIntro(true);
   };
 
@@ -62,6 +65,8 @@ export const App: React.FC = () => {
           onComplete={handleIntroComplete}
           prefersReducedMotion={prefersReducedMotion}
           onUserGesture={handlePlayMusic}
+          isPlayingMusic={isPlayingMusic}
+          onToggleMusic={handleToggleMusic}
         />
       )}
 

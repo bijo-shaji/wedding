@@ -2,18 +2,22 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GoldenCross, FloralCorner } from "./FloralDecorations";
 import { EVENT_CONFIG } from "../config/event";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown, Sparkles, Volume2, VolumeX } from "lucide-react";
 
 interface InvitationIntroProps {
   onComplete: () => void;
   prefersReducedMotion: boolean;
   onUserGesture?: () => void;
+  isPlayingMusic?: boolean;
+  onToggleMusic?: () => void;
 }
 
 export const InvitationIntro: React.FC<InvitationIntroProps> = ({
   onComplete,
   prefersReducedMotion,
   onUserGesture,
+  isPlayingMusic = false,
+  onToggleMusic,
 }) => {
   const [stage, setStage] = useState<number>(1);
   const [isOpening, setIsOpening] = useState<boolean>(false);
@@ -110,6 +114,47 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
         <div className="absolute bottom-0 right-0">
           <FloralCorner position="bottom-right" size={190} className="opacity-80" />
         </div>
+
+        {/* Super On/Off Music Button right on Intro Screen */}
+        {onToggleMusic && (
+          <div className="absolute top-6 left-6 z-30">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleMusic();
+              }}
+              aria-label={isPlayingMusic ? "Turn music off" : "Turn music on"}
+              title={isPlayingMusic ? "Turn music off" : "Turn music on"}
+              className={`group relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all duration-300 border shadow-md hover:shadow-lg active:scale-95 ${
+                isPlayingMusic
+                  ? "bg-burgundy-900 text-gold-200 border-gold-400/80 ring-2 ring-gold-400/25"
+                  : "bg-white/90 text-slate-500 border-gold-300/70 hover:text-burgundy-900 hover:border-gold-400"
+              }`}
+            >
+              {isPlayingMusic ? (
+                <>
+                  <Volume2 className="w-3.5 h-3.5 text-gold-300 animate-pulse" />
+                  <span className="flex items-end gap-[2px] h-3 px-0.5">
+                    <span className="w-[2px] h-full bg-gold-400 rounded-full animate-pulse" />
+                    <span className="w-[2px] h-2 bg-gold-300 rounded-full animate-bounce" />
+                    <span className="w-[2px] h-2.5 bg-gold-400 rounded-full animate-pulse" />
+                  </span>
+                  <span className="font-cinzel text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded-full bg-gold-500/20 text-gold-300 border border-gold-400/40">
+                    ON
+                  </span>
+                </>
+              ) : (
+                <>
+                  <VolumeX className="w-3.5 h-3.5 text-slate-400 group-hover:text-burgundy-800" />
+                  <span className="font-cinzel text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200 group-hover:text-burgundy-900">
+                    OFF
+                  </span>
+                </>
+              )}
+            </button>
+          </div>
+        )}
 
         {/* Skip button in header */}
         <button
