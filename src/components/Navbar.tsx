@@ -52,18 +52,21 @@ export const Navbar: React.FC<NavbarProps> = ({
     const id = href.replace("#", "");
     const element = document.getElementById(id);
     if (element) {
-      // Find the inner card container if present, or the section itself
-      const card = (element.querySelector(".rounded-3xl") as HTMLElement) || element;
       const navbar = document.querySelector("nav");
       const navHeight = navbar ? navbar.offsetHeight : 64;
 
-      const isMobile = window.innerWidth < 768;
-      // Generous top buffer so the card header, rounded corners, and badges are fully visible
-      const buffer = isMobile ? 16 : 28;
+      // Find the primary visual target: inner card (.rounded-3xl) or heading (.text-center) or the element
+      const targetElement =
+        (element.querySelector(".rounded-3xl") as HTMLElement) ||
+        (element.querySelector(".text-center") as HTMLElement) ||
+        element;
 
-      const cardRect = card.getBoundingClientRect();
+      const elementRect = targetElement.getBoundingClientRect();
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      const targetY = cardRect.top + currentScroll - navHeight - buffer;
+
+      // Clean, elegant spacing below navbar (14px on mobile, 20px on desktop)
+      const topGap = window.innerWidth < 768 ? 14 : 20;
+      const targetY = elementRect.top + currentScroll - navHeight - topGap;
 
       window.scrollTo({
         top: Math.max(0, Math.round(targetY)),

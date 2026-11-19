@@ -9,8 +9,11 @@ export interface CountdownState {
   totalRemainingMs: number;
 }
 
-export function calculateTimeRemaining(targetTimestampMs: number): CountdownState {
-  const now = Date.now();
+export function calculateTimeRemaining(
+  targetTimestampMs: number,
+  currentTimestampMs: number = Date.now()
+): CountdownState {
+  const now = currentTimestampMs;
   const diff = targetTimestampMs - now;
 
   if (diff <= 0) {

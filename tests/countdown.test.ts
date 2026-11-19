@@ -4,11 +4,12 @@ import { calculateTimeRemaining } from "../src/hooks/useCountdown";
 describe("Countdown Calculations", () => {
   it("calculates positive days, hours, minutes, and seconds for future dates", () => {
     // 2 days, 3 hours, 4 minutes, 5 seconds in the future
+    const baseNow = 1700000000000;
     const offsetMs =
       (2 * 24 * 60 * 60 + 3 * 60 * 60 + 4 * 60 + 5) * 1000;
-    const targetMs = Date.now() + offsetMs;
+    const targetMs = baseNow + offsetMs;
 
-    const remaining = calculateTimeRemaining(targetMs);
+    const remaining = calculateTimeRemaining(targetMs, baseNow);
     expect(remaining.isCompleted).toBe(false);
     expect(remaining.days).toBe(2);
     expect(remaining.hours).toBe(3);
