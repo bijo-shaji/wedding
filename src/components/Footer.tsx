@@ -1,29 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { EVENT_CONFIG } from "../config/event";
 import { GoldenCross, FloralCorner, GoldDivider } from "./FloralDecorations";
-import { Heart, MessageCircle, Copy, Check } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export const Footer: React.FC = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleWhatsAppShare = () => {
-    const url = typeof window !== "undefined" ? window.location.origin : "https://shebakenneth.wedding";
-    const text = `Sheba & Kenneth — A Celebration of Love\nTogether with our families, we joyfully invite you to celebrate our Engagement & Wedding in January 2027.\n\nExplore our wedding invitation:\n${url}`;
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-  };
-
-  const handleCopyLink = async () => {
-    try {
-      const url = typeof window !== "undefined" ? window.location.origin : "https://shebakenneth.wedding";
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
-    } catch {
-      // Fallback
-    }
-  };
-
   return (
     <footer className="relative pt-16 pb-12 px-4 overflow-hidden text-center bg-gradient-to-t from-[#F4E8D3]/50 to-transparent">
       {/* Decorative Bottom Floral Corners */}
@@ -39,7 +19,7 @@ export const Footer: React.FC = () => {
         <GoldenCross size={40} className="mb-4" />
 
         {/* Section I — Final Blessing */}
-        <div className="mb-8">
+        <div className="mb-6">
           <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-burgundy-900 leading-relaxed max-w-lg mx-auto font-medium">
             &ldquo;Your presence, prayers, and blessings will make our celebration even more
             special.&rdquo;
@@ -55,38 +35,8 @@ export const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* Subtle, elegant share row */}
-        <div className="my-5 flex items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={handleWhatsAppShare}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-emerald-700 border border-emerald-300 text-xs font-cinzel font-semibold tracking-wider shadow-2xs hover:scale-105 transition-all"
-          >
-            <MessageCircle className="w-3.5 h-3.5 fill-emerald-600 text-emerald-600" />
-            <span>Share via WhatsApp</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleCopyLink}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-slate-700 border border-gold-300 text-xs font-cinzel font-semibold tracking-wider shadow-2xs hover:scale-105 transition-all"
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-sage-600" />
-                <span className="text-sage-700">Link Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5 text-gold-600" />
-                <span>Copy Link</span>
-              </>
-            )}
-          </button>
-        </div>
-
         {/* Heart separator */}
-        <div className="my-3 flex items-center justify-center text-gold-500">
+        <div className="my-4 flex items-center justify-center text-gold-500">
           <Heart className="w-4 h-4 fill-gold-400 text-gold-500" />
         </div>
 
