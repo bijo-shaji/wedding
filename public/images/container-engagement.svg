@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Luxurious Stage Lighting -->
+    <radialGradient id="stageSpotlight" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFF9ED" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#FBF0DE" stop-opacity="0.95"/>
+      <stop offset="75%" stop-color="#EEDAC0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#DFC5A0" stop-opacity="0.95"/>
+    </radialGradient>
+
+    <!-- Deep Royal Burgundy Rose -->
+    <radialGradient id="engRoseBurgundy" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#C52243"/>
+      <stop offset="50%" stop-color="#801026"/>
+      <stop offset="100%" stop-color="#4A0512"/>
+    </radialGradient>
+
+    <!-- Soft Blush Peony -->
+    <radialGradient id="engPetalBlush" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFF3F1"/>
+      <stop offset="60%" stop-color="#EAC0BD"/>
+      <stop offset="100%" stop-color="#D58696"/>
+    </radialGradient>
+
+    <!-- Luxury Gold Ribbon & Arch -->
+    <linearGradient id="engGoldArch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5DB"/>
+      <stop offset="30%" stop-color="#ECC480"/>
+      <stop offset="65%" stop-color="#D7AB63"/>
+      <stop offset="100%" stop-color="#9C6B25"/>
+    </linearGradient>
+
+    <linearGradient id="engLeafSage" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8E9E82"/>
+      <stop offset="60%" stop-color="#59654C"/>
+      <stop offset="100%" stop-color="#343D2C"/>
+    </linearGradient>
+
+    <radialGradient id="engChandelierGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF6E0" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#E5B458" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#D7AB63" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 1. Grand Stage Warm Champagne Background -->
+  <rect width="1200" height="900" fill="url(#stageSpotlight)"/>
+
+  <!-- 2. Opulent Silk Drapery Valance (Stage Curtains) -->
+  <path d="M 0 0 L 1200 0 L 1200 160 Q 900 110, 600 160 Q 300 110, 0 160 Z" fill="#F4E3CB" opacity="0.6"/>
+  <path d="M 0 0 Q 200 240, 0 550" fill="none" stroke="#D7AB63" stroke-width="2" opacity="0.35"/>
+  <path d="M 1200 0 Q 1000 240, 1200 550" fill="none" stroke="#D7AB63" stroke-width="2" opacity="0.35"/>
+
+  <!-- 3. Twin Grand Crystal Chandeliers Hanging from Ceiling -->
+  <g transform="translate(250, 40)" opacity="0.65">
+    <line x1="0" y1="0" x2="0" y2="70" stroke="url(#engGoldArch)" stroke-width="2.5"/>
+    <ellipse cx="0" cy="70" rx="45" ry="12" fill="none" stroke="url(#engGoldArch)" stroke-width="2"/>
+    <path d="M -45 70 Q 0 140, 45 70" fill="none" stroke="url(#engGoldArch)" stroke-width="2"/>
+    <path d="M -30 85 Q 0 145, 30 85" fill="none" stroke="url(#engGoldArch)" stroke-width="1.5"/>
+    <circle cx="0" cy="148" r="7" fill="#ECC480"/>
+    <circle cx="0" cy="95" r="50" fill="url(#engChandelierGlow)"/>
+  </g>
+
+  <g transform="translate(950, 40)" opacity="0.65">
+    <line x1="0" y1="0" x2="0" y2="70" stroke="url(#engGoldArch)" stroke-width="2.5"/>
+    <ellipse cx="0" cy="70" rx="45" ry="12" fill="none" stroke="url(#engGoldArch)" stroke-width="2"/>
+    <path d="M -45 70 Q 0 140, 45 70" fill="none" stroke="url(#engGoldArch)" stroke-width="2"/>
+    <path d="M -30 85 Q 0 145, 30 85" fill="none" stroke="url(#engGoldArch)" stroke-width="1.5"/>
+    <circle cx="0" cy="148" r="7" fill="#ECC480"/>
+    <circle cx="0" cy="95" r="50" fill="url(#engChandelierGlow)"/>
+  </g>
+
+  <!-- 4. Grand Golden Circular Engagement Arch Centerpiece -->
+  <g transform="translate(600, 450)" opacity="0.55">
+    <circle cx="0" cy="0" r="320" fill="none" stroke="url(#engGoldArch)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="332" fill="none" stroke="url(#engGoldArch)" stroke-width="1.2" stroke-dasharray="8,6"/>
+  </g>
+
+  <!-- 5. Floral Garland Cascading Over Arch (Burgundy & Blush Roses with Foliage) -->
+  {/* Top Arch Floral Swag */}
+  <g transform="translate(600, 140)">
+    <!-- Leaves -->
+    <path d="M -160 0 Q -110 -40, -60 -10 Q -100 30, -160 0 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+    <path d="M 60 -10 Q 110 -40, 160 0 Q 100 30, 60 -10 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+    <path d="M -90 -20 Q -40 -60, 0 -30 Q -50 0, -90 -20 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+    <path d="M 0 -30 Q 40 -60, 90 -20 Q 50 0, 0 -30 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+
+    <!-- Blush Peonies -->
+    <circle cx="-110" cy="-10" r="28" fill="url(#engPetalBlush)" opacity="0.95"/>
+    <circle cx="110" cy="-10" r="28" fill="url(#engPetalBlush)" opacity="0.95"/>
+    <circle cx="0" cy="-35" r="32" fill="url(#engPetalBlush)" opacity="0.95"/>
+
+    <!-- Burgundy Roses -->
+    <circle cx="-60" cy="-15" r="26" fill="url(#engRoseBurgundy)"/>
+    <circle cx="60" cy="-15" r="26" fill="url(#engRoseBurgundy)"/>
+    <circle cx="0" cy="-10" r="24" fill="url(#engRoseBurgundy)"/>
+
+    <!-- Gold Stamen dots -->
+    <circle cx="-40" cy="-30" r="3.5" fill="url(#engGoldArch)"/>
+    <circle cx="40" cy="-30" r="3.5" fill="url(#engGoldArch)"/>
+    <circle cx="-80" cy="5" r="3" fill="url(#engGoldArch)"/>
+    <circle cx="80" cy="5" r="3" fill="url(#engGoldArch)"/>
+  </g>
+
+  {/* Left Arch Floral Cluster */}
+  <g transform="translate(290, 420)">
+    <circle cx="0" cy="0" r="30" fill="url(#engPetalBlush)" opacity="0.9"/>
+    <circle cx="15" cy="-25" r="24" fill="url(#engRoseBurgundy)"/>
+    <circle cx="-10" cy="25" r="22" fill="url(#engRoseBurgundy)"/>
+    <path d="M 10 30 Q 30 70, 0 85 Q -25 50, 10 30 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+    <path d="M 20 -30 Q 50 -60, 20 -80 Q -10 -50, 20 -30 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+  </g>
+
+  {/* Right Arch Floral Cluster */}
+  <g transform="translate(910, 420)">
+    <circle cx="0" cy="0" r="30" fill="url(#engPetalBlush)" opacity="0.9"/>
+    <circle cx="-15" cy="-25" r="24" fill="url(#engRoseBurgundy)"/>
+    <circle cx="10" cy="25" r="22" fill="url(#engRoseBurgundy)"/>
+    <path d="M -10 30 Q -30 70, 0 85 Q 25 50, -10 30 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+    <path d="M -20 -30 Q -50 -60, -20 -80 Q 10 -50, -20 -30 Z" fill="url(#engLeafSage)" opacity="0.85"/>
+  </g>
+
+  <!-- 6. Warm Festive Fairy Lights & Bokeh Scattered Throughout -->
+  <g opacity="0.8">
+    <circle cx="180" cy="260" r="50" fill="url(#engChandelierGlow)"/>
+    <circle cx="1020" cy="260" r="50" fill="url(#engChandelierGlow)"/>
+    <circle cx="480" cy="380" r="60" fill="url(#engChandelierGlow)"/>
+    <circle cx="720" cy="380" r="60" fill="url(#engChandelierGlow)"/>
+    <circle cx="360" cy="720" r="70" fill="url(#engChandelierGlow)"/>
+    <circle cx="840" cy="720" r="70" fill="url(#engChandelierGlow)"/>
+  </g>
+</svg>
