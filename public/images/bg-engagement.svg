@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="engGlow" cx="50%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFF9ED" stop-opacity="0.9"/>
+      <stop offset="35%" stop-color="#F7EBD7" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#EEDAC0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#DFCAA8" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="bokehGold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE8B5" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#D7AB63" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D7AB63" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="chandelierGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5DB" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#D7AB63" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#8C5C1E" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base warm ballroom atmosphere -->
+  <rect width="1600" height="900" fill="url(#engGlow)"/>
+
+  <!-- Opulent Golden Chandelier Silhouette Elements from ceiling -->
+  <g opacity="0.35" transform="translate(800, 0)">
+    {/* Central Chandelier Tier 1 */}
+    <path d="M-120 0 L-100 120 L100 120 L120 0 Z" fill="none" stroke="url(#chandelierGold)" stroke-width="2"/>
+    <path d="M-180 120 C -120 220, 120 220, 180 120" fill="none" stroke="url(#chandelierGold)" stroke-width="2.5"/>
+    <path d="M-220 180 C -140 320, 140 320, 220 180" fill="none" stroke="url(#chandelierGold)" stroke-width="2"/>
+    <path d="M-90 260 C -50 360, 50 360, 90 260" fill="none" stroke="url(#chandelierGold)" stroke-width="1.8"/>
+    {/* Crystal pendants */}
+    <circle cx="0" cy="380" r="14" fill="#FFE8B5" opacity="0.7"/>
+    <circle cx="-60" cy="340" r="9" fill="#FFE8B5" opacity="0.6"/>
+    <circle cx="60" cy="340" r="9" fill="#FFE8B5" opacity="0.6"/>
+    <circle cx="-140" cy="280" r="8" fill="#FFE8B5" opacity="0.5"/>
+    <circle cx="140" cy="280" r="8" fill="#FFE8B5" opacity="0.5"/>
+  </g>
+
+  <!-- Left & Right Grand Ballroom Drapery Curves -->
+  <path d="M0 0 Q 300 250, 0 650" fill="none" stroke="#D7AB63" stroke-width="1.5" opacity="0.25"/>
+  <path d="M0 0 Q 240 280, 0 800" fill="none" stroke="#7C1024" stroke-width="1" opacity="0.15"/>
+  <path d="M1600 0 Q 1300 250, 1600 650" fill="none" stroke="#D7AB63" stroke-width="1.5" opacity="0.25"/>
+  <path d="M1600 0 Q 1360 280, 1600 800" fill="none" stroke="#7C1024" stroke-width="1" opacity="0.15"/>
+
+  <!-- Warm Golden Bokeh Ambient Lights -->
+  <circle cx="280" cy="220" r="120" fill="url(#bokehGold)"/>
+  <circle cx="1320" cy="240" r="140" fill="url(#bokehGold)"/>
+  <circle cx="500" cy="480" r="90" fill="url(#bokehGold)"/>
+  <circle cx="1120" cy="520" r="110" fill="url(#bokehGold)"/>
+  <circle cx="800" cy="620" r="160" fill="url(#bokehGold)"/>
+  <circle cx="200" cy="720" r="80" fill="url(#bokehGold)"/>
+  <circle cx="1400" cy="700" r="95" fill="url(#bokehGold)"/>
+</svg>

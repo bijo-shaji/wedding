@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { EVENT_CONFIG } from "./config/event";
 import { useReducedMotion } from "./hooks/useReducedMotion";
-import { InvitationIntro } from "./components/InvitationIntro";
 import { Navbar } from "./components/Navbar";
 import { FloatingPetals, GoldenSparkleAura } from "./components/FloralDecorations";
 import { Hero } from "./components/Hero";
@@ -16,31 +15,9 @@ import { Footer } from "./components/Footer";
 export const App: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
 
-  // Determine if intro has been seen previously in this session
-  const [showIntro, setShowIntro] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return false;
-    }
-    try {
-      const seen = sessionStorage.getItem("wedding_intro_seen");
-      return seen !== "true";
-    } catch {
-      return true;
-    }
-  });
-
   const [showPetals, setShowPetals] = useState<boolean>(
     EVENT_CONFIG.features.enableRosePetals && !prefersReducedMotion
   );
-
-  const handleIntroComplete = () => {
-    setShowIntro(false);
-  };
-
-  const handleReplayIntro = () => {
-    setShowIntro(true);
-  };
 
   const handleTogglePetals = () => {
     setShowPetals((prev) => !prev);
@@ -51,17 +28,8 @@ export const App: React.FC = () => {
       {/* Ambient Bokeh Atmosphere */}
       <GoldenSparkleAura />
 
-      {/* Cinematic Invitation Intro Modal */}
-      {showIntro && (
-        <InvitationIntro
-          onComplete={handleIntroComplete}
-          prefersReducedMotion={prefersReducedMotion}
-        />
-      )}
-
-      {/* Persistent Navigation Bar with WhatsApp Share & Intro Replay */}
+      {/* Persistent Navigation Bar with WhatsApp Share & Petal Control */}
       <Navbar
-        onReplayIntro={handleReplayIntro}
         showPetals={showPetals}
         onTogglePetals={handleTogglePetals}
       />
@@ -71,19 +39,19 @@ export const App: React.FC = () => {
 
       {/* Main Single Page Content */}
       <main className="relative z-10">
-        {/* Section A: Hero */}
+        {/* Section A: Hero with Pinterest Couple Artwork */}
         <Hero />
 
         {/* Section B: Our Love, Our Celebration */}
         <CelebrationIntro />
 
-        {/* Section C: The Engagement (Saturday, Jan 2, 2027) with Ring Exchange Motif */}
+        {/* Section C: The Engagement (Saturday, Jan 2, 2027) with Luxury Banquet Hall Backdrop */}
         <Engagement />
 
-        {/* Section D: The Holy Matrimony (Monday, Jan 11, 2027) with Kerala Minnu Motif */}
+        {/* Section D: The Holy Matrimony (Monday, Jan 11, 2027) with Cathedral Backdrop & Parents */}
         <Wedding />
 
-        {/* Section E: Wedding Reception (Monday, Jan 11, 2027) with Celebration Toast Motif */}
+        {/* Section E: Wedding Reception (Monday, Jan 11, 2027) with Evening Ballroom Backdrop */}
         <Reception />
 
         {/* Section F: Venues & Directions */}
@@ -93,7 +61,7 @@ export const App: React.FC = () => {
         <GuestInquiry />
       </main>
 
-      {/* Section I & J: Final Blessing, Subtle Share Link & Copyright Footer */}
+      {/* Section I & J: Final Blessing & Copyright Footer */}
       <Footer />
     </div>
   );
