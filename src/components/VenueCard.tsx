@@ -73,7 +73,7 @@ export const VenueCard: React.FC<VenueCardProps> = ({
           href={googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-burgundy-700 hover:bg-burgundy-800 text-ivory-100 font-cinzel text-xs tracking-wider uppercase font-semibold shadow-xs transition-colors focus:outline-none focus:ring-2 focus:ring-burgundy-500"
+          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-burgundy-700 hover:bg-burgundy-800 text-ivory-100 font-cinzel text-xs tracking-wider uppercase font-semibold shadow-xs transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-burgundy-500"
         >
           <Navigation className="w-3.5 h-3.5" />
           <span>Get Directions</span>
@@ -84,7 +84,7 @@ export const VenueCard: React.FC<VenueCardProps> = ({
           onClick={handleCopyAddress}
           type="button"
           aria-label="Copy venue address"
-          className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white text-slate-700 border border-gold-300/60 text-xs font-sans font-medium transition-colors shadow-2xs"
+          className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white/80 hover:bg-white text-slate-700 border border-gold-300/60 text-xs font-sans font-medium transition-all active:scale-95 shadow-2xs"
         >
           {copied ? (
             <>

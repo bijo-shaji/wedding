@@ -19,6 +19,20 @@
     background-position: center top;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Smooth 60fps/120fps touch scroll on mobile devices */
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
+
+  button, a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {

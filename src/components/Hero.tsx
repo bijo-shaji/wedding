@@ -60,19 +60,19 @@ export const Hero: React.FC = () => {
           transition={{ delay: 0.35, duration: 0.9 }}
           className="mb-6 flex flex-col items-center"
         >
-          <h1 className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-burgundy-800 leading-none drop-shadow-xs">
+          <h1 className="font-script text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-burgundy-800 leading-none drop-shadow-xs">
             {EVENT_CONFIG.couple.bride.fullName}
           </h1>
 
           <div className="my-2 flex items-center gap-3">
-            <span className="h-[1.5px] w-14 bg-gradient-to-r from-transparent to-gold-400 opacity-80" />
-            <span className="font-serif italic text-3xl sm:text-4xl text-gold-600 font-bold">
+            <span className="h-[1.5px] w-10 sm:w-14 bg-gradient-to-r from-transparent to-gold-400 opacity-80" />
+            <span className="font-serif italic text-2xl sm:text-4xl text-gold-600 font-bold">
               &amp;
             </span>
-            <span className="h-[1.5px] w-14 bg-gradient-to-l from-transparent to-gold-400 opacity-80" />
+            <span className="h-[1.5px] w-10 sm:w-14 bg-gradient-to-l from-transparent to-gold-400 opacity-80" />
           </div>
 
-          <h1 className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-burgundy-800 leading-none drop-shadow-xs">
+          <h1 className="font-script text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-burgundy-800 leading-none drop-shadow-xs">
             {EVENT_CONFIG.couple.groom.fullName}
           </h1>
         </motion.div>
@@ -83,15 +83,15 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.92, y: 25 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative my-4 flex items-center justify-center"
+            className="relative my-4 flex items-center justify-center px-2"
           >
             {/* Ambient Golden Halo Glow */}
             <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-gold-400/25 via-amber-200/35 to-burgundy-500/20 blur-2xl pointer-events-none" />
 
             {/* Outer Golden Arch Ring */}
-            <div className="relative p-2.5 sm:p-3 rounded-t-full rounded-b-[140px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E9] to-[#EED9B2] border-2 border-gold-400/80 shadow-2xl">
+            <div className="relative p-2 sm:p-3 rounded-t-full rounded-b-[140px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E9] to-[#EED9B2] border-2 border-gold-400/80 shadow-2xl">
               {/* Inner Arch Frame */}
-              <div className="relative w-64 h-84 sm:w-76 sm:h-100 md:w-84 md:h-110 rounded-t-full rounded-b-[125px] overflow-hidden border border-gold-300 shadow-inner">
+              <div className="relative w-[230px] h-[310px] xs:w-64 xs:h-84 sm:w-76 sm:h-100 md:w-84 md:h-110 rounded-t-full rounded-b-[125px] overflow-hidden border border-gold-300 shadow-inner">
                 <img
                   src={EVENT_CONFIG.features.couplePhotoUrl}
                   alt="Sheba Shaji & Kenneth Francis - A Celebration of Love"

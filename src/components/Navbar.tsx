@@ -15,30 +15,61 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("our-celebration");
+
+  const navItems = [
+    { label: "Celebrations", href: "#our-celebration", id: "our-celebration" },
+    { label: "Engagement", href: "#engagement", id: "engagement" },
+    { label: "Wedding", href: "#wedding", id: "wedding" },
+    { label: "Venues", href: "#venues", id: "venues" },
+    ...(EVENT_CONFIG.features.showGuestInquiry
+      ? [{ label: "Contact", href: "#contact", id: "contact" }]
+      : []),
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 30);
+
+      const sectionIds = navItems.map((item) => item.id);
+      const scrollPos = window.scrollY + 140;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && scrollPos >= el.offsetTop) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { label: "Celebrations", href: "#our-celebration" },
-    { label: "Engagement", href: "#engagement" },
-    { label: "Wedding", href: "#wedding" },
-    { label: "Venues", href: "#venues" },
-    ...(EVENT_CONFIG.features.showGuestInquiry ? [{ label: "Contact", href: "#contact" }] : []),
-  ];
-
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
     const id = href.replace("#", "");
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      // Find the inner card container if present, or the section itself
+      const card = (element.querySelector(".rounded-3xl") as HTMLElement) || element;
+      const navbar = document.querySelector("nav");
+      const navHeight = navbar ? navbar.offsetHeight : 64;
+
+      const isMobile = window.innerWidth < 768;
+      // Generous top buffer so the card header, rounded corners, and badges are fully visible
+      const buffer = isMobile ? 16 : 28;
+
+      const cardRect = card.getBoundingClientRect();
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const targetY = cardRect.top + currentScroll - navHeight - buffer;
+
+      window.scrollTo({
+        top: Math.max(0, Math.round(targetY)),
+        behavior: "smooth",
+      });
+      setActiveSection(id);
     }
   };
 
@@ -52,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <nav
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
-        scrolled ? "nav-glass shadow-sm py-2.5" : "bg-transparent py-4"
+        scrolled ? "nav-glass shadow-sm py-2.5" : "bg-transparent py-3.5 sm:py-4"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
@@ -63,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2 group active:scale-95 transition-transform"
           aria-label="Back to top"
         >
           <span className="font-script text-2xl sm:text-3xl text-burgundy-800 font-bold group-hover:text-burgundy-950 transition-colors">
@@ -71,18 +102,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-7">
-          {navItems.map((item) => (
-            <button
-              key={item.href}
-              type="button"
-              onClick={() => handleNavClick(item.href)}
-              className="font-cinzel text-xs uppercase tracking-widest text-slate-800 hover:text-burgundy-800 transition-colors font-bold"
-            >
-              {item.label}
-            </button>
-          ))}
+        {/* Desktop Navigation Links with Active Indicator */}
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.href}
+                type="button"
+                onClick={() => handleNavClick(item.href)}
+                className={`relative py-1 font-cinzel text-xs uppercase tracking-widest font-bold transition-all duration-200 active:scale-95 ${
+                  isActive
+                    ? "text-burgundy-900"
+                    : "text-slate-700 hover:text-burgundy-800"
+                }`}
+              >
+                <span>{item.label}</span>
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold-400 via-burgundy-700 to-gold-400 rounded-full animate-in fade-in duration-300" />
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* Action Controls (WhatsApp Share, Replay Intro & Petal Toggle) */}
@@ -135,7 +176,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             type="button"
             onClick={handleWhatsAppShare}
             aria-label="Share on WhatsApp"
-            className="p-1.5 bg-[#25D366] text-white rounded-full shadow-xs"
+            className="p-2 bg-[#25D366] text-white rounded-full shadow-xs active:scale-90 transition-transform"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
           </button>
@@ -145,7 +186,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onReplayIntro}
             aria-label="Replay intro"
             title="Replay intro"
-            className="p-1.5 text-gold-700 hover:text-burgundy-800 rounded-lg"
+            className="p-2 text-gold-700 hover:text-burgundy-800 rounded-full active:scale-90 transition-transform hover:bg-gold-100/60"
           >
             <Film className="w-4 h-4" />
           </button>
@@ -154,7 +195,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
-            className="p-2 text-burgundy-900 rounded-lg hover:bg-gold-100/60 transition-colors"
+            className="p-2 text-burgundy-900 rounded-full hover:bg-gold-100/60 active:scale-90 transition-transform"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -163,29 +204,36 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden nav-glass border-b border-gold-300/40 px-4 py-4 animate-in fade-in slide-in-from-top-3">
-          <div className="flex flex-col gap-3">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                type="button"
-                onClick={() => handleNavClick(item.href)}
-                className="text-left py-2 px-3 rounded-lg font-cinzel text-xs uppercase tracking-widest text-slate-800 hover:bg-gold-100/60 hover:text-burgundy-800 transition-colors font-bold"
-              >
-                {item.label}
-              </button>
-            ))}
+        <div className="md:hidden nav-glass border-b border-gold-300/40 px-4 py-3.5 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex flex-col gap-1.5">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.href}
+                  type="button"
+                  onClick={() => handleNavClick(item.href)}
+                  className={`text-left py-2.5 px-3.5 rounded-xl font-cinzel text-xs uppercase tracking-widest transition-all active:scale-98 ${
+                    isActive
+                      ? "bg-gold-100/90 text-burgundy-950 font-bold border-l-3 border-gold-500 shadow-2xs"
+                      : "text-slate-800 hover:bg-gold-50/60 hover:text-burgundy-800 font-semibold"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
 
-            <div className="pt-3 border-t border-gold-300/30 flex items-center justify-between px-3">
-              <span className="font-cinzel text-xs text-slate-700 uppercase tracking-wider font-semibold">
+            <div className="pt-2.5 mt-1 border-t border-gold-300/30 flex items-center justify-between px-3">
+              <span className="font-cinzel text-[11px] text-slate-700 uppercase tracking-wider font-semibold">
                 Floating Rose Petals
               </span>
               <button
                 type="button"
                 onClick={onTogglePetals}
-                className={`px-3 py-1 rounded-full text-xs font-cinzel font-bold uppercase tracking-wider transition-colors ${
+                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold uppercase tracking-wider transition-all active:scale-95 ${
                   showPetals
-                    ? "bg-burgundy-700 text-ivory-100"
+                    ? "bg-burgundy-700 text-ivory-100 shadow-xs"
                     : "bg-slate-200 text-slate-600"
                 }`}
               >

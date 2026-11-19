@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <!-- Base Warm Champagne & Silk Radiant Gradient -->
-    <radialGradient id="silkRadiance" cx="50%" cy="30%" r="75%">
-      <stop offset="0%" stop-color="#FFFDF7"/>
-      <stop offset="35%" stop-color="#FAF2E4"/>
-      <stop offset="70%" stop-color="#F3E5D0"/>
-      <stop offset="100%" stop-color="#E7D2B5"/>
+    <!-- Radiant Warm Champagne Silk Gradient -->
+    <radialGradient id="silkRadiance" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#FFFDF8"/>
+      <stop offset="35%" stop-color="#FAF3E6"/>
+      <stop offset="70%" stop-color="#F2E5D2"/>
+      <stop offset="100%" stop-color="#E8D5BC"/>
     </radialGradient>
 
     <!-- Deep Royal Burgundy Rose Gradient -->
@@ -15,21 +15,21 @@
       <stop offset="100%" stop-color="#4A0512"/>
     </radialGradient>
 
-    <!-- Blush Pink Blossom Gradient -->
+    <!-- Soft Blush Peony Gradient -->
     <radialGradient id="bgPetalBlush" cx="40%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#FFF3F1"/>
+      <stop offset="0%" stop-color="#FFF5F3"/>
       <stop offset="65%" stop-color="#EAC0BD"/>
-      <stop offset="100%" stop-color="#DCA4A0"/>
+      <stop offset="100%" stop-color="#D89A96"/>
     </radialGradient>
 
-    <!-- Sage Foliage Gradient -->
+    <!-- Sage Eucalyptus Foliage Gradient -->
     <linearGradient id="bgLeafSage" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#8E9E82"/>
       <stop offset="70%" stop-color="#59654C"/>
-      <stop offset="100%" stop-color="#3B4432"/>
+      <stop offset="100%" stop-color="#384230"/>
     </linearGradient>
 
-    <!-- Metallic Gold Foliage & Accents -->
+    <!-- Luxury Gold Foil & Filigree -->
     <linearGradient id="bgGoldFoil" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFF8E7"/>
       <stop offset="35%" stop-color="#EED9B2"/>
@@ -37,131 +37,107 @@
       <stop offset="100%" stop-color="#9C6B25"/>
     </linearGradient>
 
-    <!-- Ambient Golden Bokeh Light Sphere -->
-    <radialGradient id="bokehGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FFF5DB" stop-opacity="0.85"/>
-      <stop offset="50%" stop-color="#E5B458" stop-opacity="0.3"/>
+    <!-- Ambient Golden Glow -->
+    <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF7E6" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E5B458" stop-opacity="0.25"/>
       <stop offset="100%" stop-color="#D7AB63" stop-opacity="0"/>
     </radialGradient>
-
-    <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3"/>
-    </filter>
   </defs>
 
-  <!-- 1. Luxurious Base Champagne Silk Background -->
+  <!-- 1. Base Champagne Silk Luxury Canvas -->
   <rect width="1920" height="1080" fill="url(#silkRadiance)"/>
 
-  <!-- 2. Golden Arch Rings in the Background (Matching Pinterest Artwork) -->
-  <g opacity="0.32" transform="translate(960, 420)">
-    <circle cx="0" cy="0" r="480" fill="none" stroke="url(#bgGoldFoil)" stroke-width="2.5"/>
-    <circle cx="0" cy="0" r="496" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1" stroke-dasharray="8,6"/>
-    <circle cx="0" cy="0" r="560" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.5" opacity="0.6"/>
+  <!-- 2. Concentric Golden Arch Lines (From Physical Invitation) -->
+  <g opacity="0.25" transform="translate(960, 480)">
+    <circle cx="0" cy="0" r="460" fill="none" stroke="url(#bgGoldFoil)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="476" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1" stroke-dasharray="8,6"/>
+    <circle cx="0" cy="0" r="540" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="0" cy="0" r="620" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1" stroke-dasharray="12,8" opacity="0.4"/>
   </g>
 
-  <!-- 3. Soft Ambient Golden Bokeh Particles -->
-  <g opacity="0.75">
-    <circle cx="280" cy="180" r="90" fill="url(#bokehGlow)"/>
-    <circle cx="1640" cy="220" r="110" fill="url(#bokehGlow)"/>
-    <circle cx="480" cy="520" r="130" fill="url(#bokehGlow)"/>
-    <circle cx="1440" cy="580" r="140" fill="url(#bokehGlow)"/>
-    <circle cx="960" cy="240" r="160" fill="url(#bokehGlow)"/>
-    <circle cx="200" cy="850" r="120" fill="url(#bokehGlow)"/>
-    <circle cx="1720" cy="860" r="130" fill="url(#bokehGlow)"/>
-    <circle cx="820" cy="920" r="100" fill="url(#bokehGlow)"/>
-    <circle cx="1120" cy="940" r="110" fill="url(#bokehGlow)"/>
+  <!-- 3. Soft Ambient Golden Light Halos -->
+  <g opacity="0.6">
+    <circle cx="320" cy="220" r="160" fill="url(#ambientGlow)"/>
+    <circle cx="1600" cy="260" r="180" fill="url(#ambientGlow)"/>
+    <circle cx="540" cy="620" r="200" fill="url(#ambientGlow)"/>
+    <circle cx="1380" cy="680" r="220" fill="url(#ambientGlow)"/>
+    <circle cx="960" cy="300" r="240" fill="url(#ambientGlow)"/>
   </g>
 
-  <!-- 4. TOP LEFT FLORAL CANOPY ARRANGEMENT -->
-  <g transform="translate(0, 0)">
-    <!-- Golden Tendrils -->
-    <path d="M -20 -20 Q 200 60, 360 240 Q 420 320, 480 500" fill="none" stroke="url(#bgGoldFoil)" stroke-width="2" opacity="0.75"/>
-    <path d="M -20 -20 Q 80 180, 240 380 Q 300 460, 320 620" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.8" opacity="0.65"/>
+  <!-- 4. TOP-LEFT BOTANICAL FLORAL BRANCH (Delicate organic leaves & roses, no balloons) -->
+  <g transform="translate(0, 0)" opacity="0.85">
+    <!-- Golden Swirling Vine -->
+    <path d="M 0 40 Q 120 70, 180 180 T 260 360" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.8"/>
+    <path d="M 40 0 Q 70 120, 180 200 T 360 260" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.5" opacity="0.7"/>
 
     <!-- Sage Eucalyptus Leaves -->
-    <path d="M 120 40 Q 180 30, 190 70 Q 160 110, 120 80 Z" fill="url(#bgLeafSage)" opacity="0.85"/>
-    <path d="M 220 80 Q 280 60, 300 110 Q 270 140, 210 120 Z" fill="url(#bgLeafSage)" opacity="0.85"/>
-    <path d="M 160 160 Q 230 150, 240 210 Q 200 240, 150 200 Z" fill="url(#bgLeafSage)" opacity="0.85"/>
-    <path d="M 280 200 Q 360 190, 370 260 Q 310 290, 260 240 Z" fill="url(#bgLeafSage)" opacity="0.8"/>
-    <path d="M 210 290 Q 280 300, 270 370 Q 210 370, 190 320 Z" fill="url(#bgLeafSage)" opacity="0.8"/>
+    <path d="M 60 70 Q 110 50, 130 90 Q 90 120, 60 70 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 120 120 Q 170 100, 180 150 Q 140 180, 120 120 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 90 180 Q 140 170, 150 220 Q 100 240, 90 180 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 170 210 Q 230 190, 240 250 Q 180 280, 170 210 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 140 290 Q 200 280, 200 340 Q 150 360, 140 290 Z" fill="url(#bgLeafSage)"/>
 
-    <!-- Golden Leaves -->
-    <path d="M 80 120 Q 140 130, 130 170 Q 90 180, 70 140 Z" fill="url(#bgGoldFoil)" opacity="0.9"/>
-    <path d="M 320 140 Q 380 160, 360 210 Q 310 200, 300 160 Z" fill="url(#bgGoldFoil)" opacity="0.85"/>
-    <path d="M 240 380 Q 310 400, 290 460 Q 230 450, 220 400 Z" fill="url(#bgGoldFoil)" opacity="0.8"/>
+    <!-- Golden Accent Leaves -->
+    <path d="M 100 40 Q 140 30, 150 70 Q 110 90, 100 40 Z" fill="url(#bgGoldFoil)" opacity="0.85"/>
+    <path d="M 190 140 Q 240 130, 240 180 Q 190 200, 190 140 Z" fill="url(#bgGoldFoil)" opacity="0.85"/>
+    <path d="M 230 250 Q 280 240, 280 290 Q 230 310, 230 250 Z" fill="url(#bgGoldFoil)" opacity="0.8"/>
 
-    <!-- Blush Peonies -->
-    <circle cx="160" cy="110" r="54" fill="url(#bgPetalBlush)" opacity="0.95"/>
-    <circle cx="270" cy="160" r="46" fill="url(#bgPetalBlush)" opacity="0.9"/>
-    <circle cx="180" cy="260" r="44" fill="url(#bgPetalBlush)" opacity="0.9"/>
-    <circle cx="340" cy="270" r="40" fill="url(#bgPetalBlush)" opacity="0.85"/>
+    <!-- Layered Botanical Rose 1 (Top Left) -->
+    <g transform="translate(100, 110)">
+      <path d="M -30 -10 C -40 -35, 10 -45, 25 -25 C 45 -5, 30 35, 0 35 C -25 35, -45 10, -30 -10 Z" fill="url(#bgRoseBurgundy)"/>
+      <path d="M -15 -10 C -25 -25, 10 -30, 15 -15 C 25 0, 15 20, 0 20 C -15 20, -25 5, -15 -10 Z" fill="#91142C"/>
+      <circle cx="0" cy="0" r="7" fill="url(#bgGoldFoil)"/>
+    </g>
 
-    <!-- Deep Burgundy English Roses -->
-    <circle cx="110" cy="70" r="42" fill="url(#bgRoseBurgundy)"/>
-    <circle cx="210" cy="180" r="48" fill="url(#bgRoseBurgundy)"/>
-    <circle cx="120" cy="200" r="38" fill="url(#bgRoseBurgundy)"/>
-    <circle cx="280" cy="310" r="36" fill="url(#bgRoseBurgundy)"/>
+    <!-- Layered Botanical Peony 2 (Blush Pink) -->
+    <g transform="translate(190, 170)">
+      <path d="M -35 -15 C -45 -40, 15 -50, 35 -25 C 50 0, 35 40, 0 40 C -30 40, -50 15, -35 -15 Z" fill="url(#bgPetalBlush)"/>
+      <path d="M -20 -10 C -25 -25, 10 -30, 20 -15 C 25 5, 15 25, 0 25 C -15 25, -25 5, -20 -10 Z" fill="#F4D3D0"/>
+      <circle cx="0" cy="0" r="5" fill="url(#bgGoldFoil)"/>
+    </g>
 
-    <!-- Golden Berry Clusters (Baby's breath / Stamen) -->
-    <circle cx="70" cy="160" r="4" fill="url(#bgGoldFoil)"/>
-    <circle cx="85" cy="175" r="3.5" fill="url(#bgGoldFoil)"/>
-    <circle cx="150" cy="220" r="4" fill="url(#bgGoldFoil)"/>
-    <circle cx="240" cy="240" r="4" fill="url(#bgGoldFoil)"/>
-    <circle cx="330" cy="220" r="4.5" fill="url(#bgGoldFoil)"/>
-    <circle cx="380" cy="330" r="4" fill="url(#bgGoldFoil)"/>
+    <!-- Small Burgundy Bud -->
+    <g transform="translate(150, 260)">
+      <path d="M -18 -8 C -25 -20, 10 -25, 18 -12 C 25 0, 15 18, 0 18 C -15 18, -25 5, -18 -8 Z" fill="url(#bgRoseBurgundy)"/>
+    </g>
   </g>
 
-  <!-- 5. TOP RIGHT FLORAL CANOPY ARRANGEMENT (Mirrored) -->
-  <g transform="translate(1920, 0) scale(-1, 1)">
-    <!-- Golden Tendrils -->
-    <path d="M -20 -20 Q 200 60, 360 240 Q 420 320, 480 500" fill="none" stroke="url(#bgGoldFoil)" stroke-width="2" opacity="0.75"/>
-    <path d="M -20 -20 Q 80 180, 240 380 Q 300 460, 320 620" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.8" opacity="0.65"/>
+  <!-- 5. TOP-RIGHT BOTANICAL FLORAL BRANCH (Mirrored gracefully) -->
+  <g transform="translate(1920, 0) scale(-1, 1)" opacity="0.85">
+    <!-- Golden Swirling Vine -->
+    <path d="M 0 40 Q 120 70, 180 180 T 260 360" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.8"/>
+    <path d="M 40 0 Q 70 120, 180 200 T 360 260" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.5" opacity="0.7"/>
 
     <!-- Sage Eucalyptus Leaves -->
-    <path d="M 120 40 Q 180 30, 190 70 Q 160 110, 120 80 Z" fill="url(#bgLeafSage)" opacity="0.85"/>
-    <path d="M 220 80 Q 280 60, 300 110 Q 270 140, 210 120 Z" fill="url(#bgLeafSage)" opacity="0.85"/>
-    <path d="M 160 160 Q 230 150, 240 210 Q 200 240, 150 200 Z" fill="url(#bgLeafSage)" opacity="0.85"/>
-    <path d="M 280 200 Q 360 190, 370 260 Q 310 290, 260 240 Z" fill="url(#bgLeafSage)" opacity="0.8"/>
-    <path d="M 210 290 Q 280 300, 270 370 Q 210 370, 190 320 Z" fill="url(#bgLeafSage)" opacity="0.8"/>
+    <path d="M 60 70 Q 110 50, 130 90 Q 90 120, 60 70 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 120 120 Q 170 100, 180 150 Q 140 180, 120 120 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 90 180 Q 140 170, 150 220 Q 100 240, 90 180 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 170 210 Q 230 190, 240 250 Q 180 280, 170 210 Z" fill="url(#bgLeafSage)"/>
+    <path d="M 140 290 Q 200 280, 200 340 Q 150 360, 140 290 Z" fill="url(#bgLeafSage)"/>
 
-    <!-- Golden Leaves -->
-    <path d="M 80 120 Q 140 130, 130 170 Q 90 180, 70 140 Z" fill="url(#bgGoldFoil)" opacity="0.9"/>
-    <path d="M 320 140 Q 380 160, 360 210 Q 310 200, 300 160 Z" fill="url(#bgGoldFoil)" opacity="0.85"/>
-    <path d="M 240 380 Q 310 400, 290 460 Q 230 450, 220 400 Z" fill="url(#bgGoldFoil)" opacity="0.8"/>
+    <!-- Golden Accent Leaves -->
+    <path d="M 100 40 Q 140 30, 150 70 Q 110 90, 100 40 Z" fill="url(#bgGoldFoil)" opacity="0.85"/>
+    <path d="M 190 140 Q 240 130, 240 180 Q 190 200, 190 140 Z" fill="url(#bgGoldFoil)" opacity="0.85"/>
+    <path d="M 230 250 Q 280 240, 280 290 Q 230 310, 230 250 Z" fill="url(#bgGoldFoil)" opacity="0.8"/>
 
-    <!-- Blush Peonies -->
-    <circle cx="160" cy="110" r="54" fill="url(#bgPetalBlush)" opacity="0.95"/>
-    <circle cx="270" cy="160" r="46" fill="url(#bgPetalBlush)" opacity="0.9"/>
-    <circle cx="180" cy="260" r="44" fill="url(#bgPetalBlush)" opacity="0.9"/>
-    <circle cx="340" cy="270" r="40" fill="url(#bgPetalBlush)" opacity="0.85"/>
+    <!-- Layered Botanical Rose -->
+    <g transform="translate(100, 110)">
+      <path d="M -30 -10 C -40 -35, 10 -45, 25 -25 C 45 -5, 30 35, 0 35 C -25 35, -45 10, -30 -10 Z" fill="url(#bgRoseBurgundy)"/>
+      <path d="M -15 -10 C -25 -25, 10 -30, 15 -15 C 25 0, 15 20, 0 20 C -15 20, -25 5, -15 -10 Z" fill="#91142C"/>
+      <circle cx="0" cy="0" r="7" fill="url(#bgGoldFoil)"/>
+    </g>
 
-    <!-- Deep Burgundy English Roses -->
-    <circle cx="110" cy="70" r="42" fill="url(#bgRoseBurgundy)"/>
-    <circle cx="210" cy="180" r="48" fill="url(#bgRoseBurgundy)"/>
-    <circle cx="120" cy="200" r="38" fill="url(#bgRoseBurgundy)"/>
-    <circle cx="280" cy="310" r="36" fill="url(#bgRoseBurgundy)"/>
+    <!-- Layered Botanical Peony (Blush Pink) -->
+    <g transform="translate(190, 170)">
+      <path d="M -35 -15 C -45 -40, 15 -50, 35 -25 C 50 0, 35 40, 0 40 C -30 40, -50 15, -35 -15 Z" fill="url(#bgPetalBlush)"/>
+      <path d="M -20 -10 C -25 -25, 10 -30, 20 -15 C 25 5, 15 25, 0 25 C -15 25, -25 5, -20 -10 Z" fill="#F4D3D0"/>
+      <circle cx="0" cy="0" r="5" fill="url(#bgGoldFoil)"/>
+    </g>
 
-    <!-- Golden Berry Clusters -->
-    <circle cx="70" cy="160" r="4" fill="url(#bgGoldFoil)"/>
-    <circle cx="85" cy="175" r="3.5" fill="url(#bgGoldFoil)"/>
-    <circle cx="150" cy="220" r="4" fill="url(#bgGoldFoil)"/>
-    <circle cx="240" cy="240" r="4" fill="url(#bgGoldFoil)"/>
-    <circle cx="330" cy="220" r="4.5" fill="url(#bgGoldFoil)"/>
-    <circle cx="380" cy="330" r="4" fill="url(#bgGoldFoil)"/>
-  </g>
-
-  <!-- 6. BOTTOM CORNER FLORAL ACCENTS -->
-  <g transform="translate(0, 1080) scale(1, -1)">
-    <path d="M -20 -20 Q 160 50, 280 200 Q 320 260, 360 380" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.8" opacity="0.6"/>
-    <circle cx="120" cy="90" r="38" fill="url(#bgRoseBurgundy)" opacity="0.85"/>
-    <circle cx="180" cy="140" r="36" fill="url(#bgPetalBlush)" opacity="0.85"/>
-    <path d="M 190 70 Q 240 60, 250 100 Q 220 130, 180 110 Z" fill="url(#bgLeafSage)" opacity="0.8"/>
-  </g>
-
-  <g transform="translate(1920, 1080) scale(-1, -1)">
-    <path d="M -20 -20 Q 160 50, 280 200 Q 320 260, 360 380" fill="none" stroke="url(#bgGoldFoil)" stroke-width="1.8" opacity="0.6"/>
-    <circle cx="120" cy="90" r="38" fill="url(#bgRoseBurgundy)" opacity="0.85"/>
-    <circle cx="180" cy="140" r="36" fill="url(#bgPetalBlush)" opacity="0.85"/>
-    <path d="M 190 70 Q 240 60, 250 100 Q 220 130, 180 110 Z" fill="url(#bgLeafSage)" opacity="0.8"/>
+    <!-- Small Burgundy Bud -->
+    <g transform="translate(150, 260)">
+      <path d="M -18 -8 C -25 -20, 10 -25, 18 -12 C 25 0, 15 18, 0 18 C -15 18, -25 5, -18 -8 Z" fill="url(#bgRoseBurgundy)"/>
+    </g>
   </g>
 </svg>

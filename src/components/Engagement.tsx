@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { EVENT_CONFIG } from "../config/event";
 import { Countdown } from "./Countdown";
 import { GoldDivider } from "./FloralDecorations";
@@ -39,11 +40,15 @@ export const Engagement: React.FC = () => {
   return (
     <section
       id="engagement"
-      className="relative py-16 sm:py-24 px-4 max-w-5xl mx-auto scroll-mt-24"
+      className="relative py-12 sm:py-20 px-3 sm:px-6 max-w-5xl mx-auto scroll-mt-20 sm:scroll-mt-28"
     >
       {/* Engagement Ceremony Stage Container with Visible Stage Backdrop Image */}
-      <div
-        className="relative rounded-3xl p-6 sm:p-12 md:p-14 shadow-2xl overflow-hidden border-2 border-gold-400/80"
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="relative rounded-3xl p-5 sm:p-10 md:p-12 shadow-2xl overflow-hidden border-2 border-gold-400/80"
         style={{
           backgroundImage: "url('/images/container-engagement.svg')",
           backgroundSize: "cover",
@@ -51,29 +56,32 @@ export const Engagement: React.FC = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Soft crystalline veil allowing the chandeliers, floral arch & stage to be clearly visible */}
-        <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px] pointer-events-none" />
+        {/* Soft crystalline veil allowing the stage lighting to glow through */}
+        <div className="absolute inset-0 bg-white/35 backdrop-blur-[1px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          <span className="inline-block px-5 py-1.5 rounded-full text-xs font-cinzel font-bold tracking-[0.2em] text-burgundy-900 bg-white/95 border border-gold-300 uppercase mb-3 shadow-sm">
-            The Engagement Ceremony
-          </span>
+          {/* Frosted Royal Header Plaque for pristine text legibility */}
+          <div className="bg-white/85 backdrop-blur-md px-6 py-4 sm:px-8 sm:py-5 rounded-2xl border border-gold-300/70 shadow-sm mb-6 max-w-xl flex flex-col items-center">
+            <span className="inline-block px-4 py-1 rounded-full text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.2em] text-burgundy-900 bg-burgundy-50/80 border border-gold-300/60 uppercase mb-2">
+              The Engagement Ceremony
+            </span>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-burgundy-950 leading-tight drop-shadow-xs">
-            {EVENT_CONFIG.engagement.title}
-          </h2>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-burgundy-950 leading-tight">
+              {EVENT_CONFIG.engagement.title}
+            </h2>
 
-          <GoldDivider className="my-3" />
+            <GoldDivider className="my-2.5" />
 
-          <p className="font-serif italic text-base sm:text-lg text-burgundy-950 max-w-lg mb-8 font-semibold bg-white/70 px-4 py-1.5 rounded-full backdrop-blur-xs border border-gold-300/40">
-            Join us as we pledge our love, exchange sacred promises, and celebrate the union of our two families.
-          </p>
+            <p className="font-serif italic text-sm sm:text-base text-burgundy-900 font-medium">
+              Join us as we pledge our love, exchange sacred promises, and celebrate the union of our two families.
+            </p>
+          </div>
 
           {/* Key Details Grid with Solid Contrast Panels */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 w-full max-w-3xl mb-7">
             {/* Date Card */}
-            <div className="flex flex-col items-center p-5 rounded-2xl bg-white/95 border border-gold-300/80 shadow-md hover:border-gold-500 hover:shadow-lg transition-all">
-              <div className="w-11 h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
+            <div className="flex flex-col items-center p-4 sm:p-5 rounded-2xl bg-white/95 border border-gold-300/80 shadow-md hover:border-gold-500 hover:shadow-xl transition-all duration-300">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
                 <Calendar className="w-5 h-5" />
               </div>
               <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider font-bold">
@@ -85,8 +93,8 @@ export const Engagement: React.FC = () => {
             </div>
 
             {/* Time Card */}
-            <div className="flex flex-col items-center p-5 rounded-2xl bg-white/95 border border-gold-300/80 shadow-md hover:border-gold-500 hover:shadow-lg transition-all">
-              <div className="w-11 h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
+            <div className="flex flex-col items-center p-4 sm:p-5 rounded-2xl bg-white/95 border border-gold-300/80 shadow-md hover:border-gold-500 hover:shadow-xl transition-all duration-300">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
                 <Clock className="w-5 h-5" />
               </div>
               <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider font-bold">
@@ -98,8 +106,8 @@ export const Engagement: React.FC = () => {
             </div>
 
             {/* Venue Card */}
-            <div className="flex flex-col items-center p-5 rounded-2xl bg-white/95 border border-gold-300/80 shadow-md hover:border-gold-500 hover:shadow-lg transition-all">
-              <div className="w-11 h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
+            <div className="flex flex-col items-center p-4 sm:p-5 rounded-2xl bg-white/95 border border-gold-300/80 shadow-md hover:border-gold-500 hover:shadow-xl transition-all duration-300">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
                 <MapPin className="w-5 h-5" />
               </div>
               <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider font-bold">
@@ -115,7 +123,7 @@ export const Engagement: React.FC = () => {
           </div>
 
           {/* Timezone-aware Countdown Component in contrast frame */}
-          <div className="mb-8 p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-gold-300/70 shadow-md">
+          <div className="mb-7 p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-gold-300/70 shadow-md w-full max-w-md">
             <Countdown
               targetTimestampMs={EVENT_CONFIG.engagement.timestampMs}
               eventName="The Engagement"
@@ -124,13 +132,13 @@ export const Engagement: React.FC = () => {
           </div>
 
           {/* Action Buttons: Add to Calendar & Directions */}
-          <div className="flex flex-wrap items-center justify-center gap-3.5 w-full max-w-md">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full max-w-md">
             {/* Get Directions */}
             <a
               href={EVENT_CONFIG.engagement.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-burgundy-700 hover:bg-burgundy-800 text-ivory-100 font-cinzel text-xs tracking-wider uppercase font-semibold shadow-lg transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-burgundy-400"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-burgundy-700 hover:bg-burgundy-800 text-ivory-100 font-cinzel text-xs tracking-wider uppercase font-semibold shadow-lg transition-all active:scale-95 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-burgundy-400"
             >
               <Navigation className="w-4 h-4" />
               <span>Get Directions</span>
@@ -138,11 +146,11 @@ export const Engagement: React.FC = () => {
             </a>
 
             {/* Add to Calendar Dropdown */}
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <button
                 type="button"
                 onClick={() => setCalendarMenuOpen((prev) => !prev)}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-burgundy-800 border-2 border-gold-400 font-cinzel text-xs tracking-wider uppercase font-bold shadow-md transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gold-400"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-burgundy-800 border-2 border-gold-400 font-cinzel text-xs tracking-wider uppercase font-bold shadow-md transition-all active:scale-95 hover:bg-gold-50/50 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gold-400"
               >
                 <CalendarPlus className="w-4 h-4 text-gold-600" />
                 <span>Add to Calendar</span>
@@ -173,7 +181,7 @@ export const Engagement: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

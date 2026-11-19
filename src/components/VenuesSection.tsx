@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { EVENT_CONFIG } from "../config/event";
 import { VenueCard } from "./VenueCard";
 import { GoldDivider } from "./FloralDecorations";
@@ -8,15 +9,21 @@ export const VenuesSection: React.FC = () => {
   return (
     <section
       id="venues"
-      className="py-14 sm:py-20 px-4 max-w-6xl mx-auto scroll-mt-20"
+      className="py-12 sm:py-20 px-3 sm:px-6 max-w-6xl mx-auto scroll-mt-20 sm:scroll-mt-28"
     >
-      <div className="text-center mb-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-10 sm:mb-12"
+      >
         <div className="flex items-center justify-center gap-2 text-gold-600 font-cinzel text-xs font-semibold tracking-widest uppercase mb-2">
           <MapPin className="w-4 h-4" />
           <span>Locations &amp; Navigation</span>
         </div>
 
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-burgundy-800 leading-tight">
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-burgundy-900 leading-tight">
           Venues &amp; Directions
         </h2>
 
@@ -26,10 +33,10 @@ export const VenuesSection: React.FC = () => {
           We look forward to welcoming you to all our celebrations. Tap any venue below for
           verified turn-by-turn directions via Google Maps.
         </p>
-      </div>
+      </motion.div>
 
       {/* 3 Venue Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-7">
         {/* 1. Engagement Venue */}
         <VenueCard
           category="1. Engagement Venue"
