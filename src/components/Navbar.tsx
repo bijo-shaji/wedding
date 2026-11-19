@@ -158,47 +158,66 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </button>
 
-          {/* Background Melody Play / Pause Toggle Button */}
+          {/* Super On/Off Music Button */}
           <button
             type="button"
             onClick={onToggleMusic}
-            aria-label={isPlayingMusic ? "Turn off music" : "Turn on music"}
-            title={isPlayingMusic ? "Turn off melody" : "Turn on melody"}
-            className={`p-2 rounded-full transition-all border flex items-center gap-1.5 active:scale-95 ${
+            aria-label={isPlayingMusic ? "Turn music off" : "Turn music on"}
+            title={isPlayingMusic ? "Turn music off" : "Turn music on"}
+            className={`group relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-300 border shadow-xs hover:shadow-md active:scale-95 ${
               isPlayingMusic
-                ? "bg-gold-100/90 text-burgundy-900 border-gold-300 shadow-2xs"
-                : "bg-white/60 text-slate-400 border-gold-200/50 hover:text-burgundy-800"
+                ? "bg-burgundy-900 text-gold-200 border-gold-400/80 ring-2 ring-gold-400/25"
+                : "bg-white/80 text-slate-500 border-gold-300/60 hover:text-burgundy-900 hover:border-gold-400"
             }`}
           >
             {isPlayingMusic ? (
-              <Volume2 className="w-3.5 h-3.5 text-burgundy-800 animate-pulse" />
+              <>
+                <Volume2 className="w-3.5 h-3.5 text-gold-300 animate-pulse" />
+                {/* 3 Animated Soundwave Equalizer Bars */}
+                <span className="flex items-end gap-[2px] h-3 px-0.5">
+                  <span className="w-[2px] h-full bg-gold-400 rounded-full animate-pulse" />
+                  <span className="w-[2px] h-2 bg-gold-300 rounded-full animate-bounce" />
+                  <span className="w-[2px] h-2.5 bg-gold-400 rounded-full animate-pulse" />
+                </span>
+                <span className="font-cinzel text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded-full bg-gold-500/20 text-gold-300 border border-gold-400/40">
+                  ON
+                </span>
+              </>
             ) : (
-              <VolumeX className="w-3.5 h-3.5 text-slate-400" />
+              <>
+                <VolumeX className="w-3.5 h-3.5 text-slate-400 group-hover:text-burgundy-800" />
+                <span className="font-cinzel text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200 group-hover:text-burgundy-900">
+                  OFF
+                </span>
+              </>
             )}
-            <span className="hidden lg:inline text-[11px] tracking-wider uppercase font-bold font-cinzel">
-              {isPlayingMusic ? "Music On" : "Music Off"}
-            </span>
           </button>
         </div>
 
         {/* Mobile Controls */}
         <div className="flex md:hidden items-center gap-2">
-          {/* Mobile Music Toggle */}
+          {/* Mobile Super On/Off Music Button */}
           <button
             type="button"
             onClick={onToggleMusic}
-            aria-label={isPlayingMusic ? "Turn off music" : "Turn on music"}
-            title={isPlayingMusic ? "Turn off melody" : "Turn on melody"}
-            className={`p-2 rounded-full active:scale-90 transition-transform border ${
+            aria-label={isPlayingMusic ? "Turn music off" : "Turn music on"}
+            title={isPlayingMusic ? "Turn music off" : "Turn music on"}
+            className={`relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 active:scale-90 shadow-xs border ${
               isPlayingMusic
-                ? "bg-gold-100 text-burgundy-900 border-gold-300 shadow-2xs"
-                : "bg-white/70 text-slate-400 border-gold-200/60"
+                ? "bg-burgundy-900 text-gold-200 border-2 border-gold-400 ring-2 ring-gold-400/25 shadow-md"
+                : "bg-white/85 text-slate-400 border border-gold-300/70 hover:text-burgundy-900"
             }`}
           >
             {isPlayingMusic ? (
-              <Volume2 className="w-4 h-4 text-burgundy-800 animate-pulse" />
+              <>
+                <Volume2 className="w-4 h-4 text-gold-300 animate-pulse" />
+                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white ring-1 ring-emerald-600/30 animate-pulse" />
+              </>
             ) : (
-              <VolumeX className="w-4 h-4 text-slate-400" />
+              <>
+                <VolumeX className="w-4 h-4 text-slate-400" />
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-rose-400 border border-white" />
+              </>
             )}
           </button>
 
@@ -254,24 +273,24 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
 
             <div className="pt-2.5 mt-1 border-t border-gold-300/30 flex items-center justify-between px-3">
-              <span className="font-cinzel text-[11px] text-slate-700 uppercase tracking-wider font-semibold flex items-center gap-1.5">
+              <span className="font-cinzel text-xs text-[#3D3331] uppercase tracking-wider font-bold flex items-center gap-2">
                 {isPlayingMusic ? (
-                  <Volume2 className="w-3.5 h-3.5 text-burgundy-800" />
+                  <Volume2 className="w-4 h-4 text-burgundy-800 animate-pulse" />
                 ) : (
-                  <VolumeX className="w-3.5 h-3.5 text-slate-400" />
+                  <VolumeX className="w-4 h-4 text-slate-400" />
                 )}
-                Background Melody
+                Golden Brown Music
               </span>
               <button
                 type="button"
                 onClick={onToggleMusic}
-                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold uppercase tracking-wider transition-all active:scale-95 ${
+                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold tracking-wider transition-all active:scale-95 flex items-center gap-1.5 ${
                   isPlayingMusic
-                    ? "bg-burgundy-700 text-ivory-100 shadow-xs"
-                    : "bg-slate-200 text-slate-600"
+                    ? "bg-burgundy-800 text-gold-200 border border-gold-400 shadow-xs"
+                    : "bg-slate-200 text-slate-600 border border-slate-300"
                 }`}
               >
-                {isPlayingMusic ? "Playing" : "Off"}
+                <span>{isPlayingMusic ? "ON" : "OFF"}</span>
               </button>
             </div>
           </div>

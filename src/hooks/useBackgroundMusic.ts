@@ -4,11 +4,13 @@ import { EVENT_CONFIG } from "../config/event";
 export interface BackgroundMusicState {
   isPlaying: boolean;
   toggleMusic: () => void;
+  playMusic: () => void;
+  pauseMusic: () => void;
 }
 
 /**
  * Background melody player hook adhering to browser autoplay policies.
- * Unlocks audio on first user touch/click and allows one-click toggle.
+ * Starts playback immediately on initial landing or on the first user interaction.
  */
 export function useBackgroundMusic(): BackgroundMusicState {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -27,10 +29,10 @@ export function useBackgroundMusic(): BackgroundMusicState {
     }
     userMutedRef.current = isMutedInSession;
 
-    const musicUrl = EVENT_CONFIG.features.backgroundMusicUrl || "/audio/wedding-melody.mp3";
+    const musicUrl = EVENT_CONFIG.features.backgroundMusicUrl || "/audio/golden-brown.mp3";
     const audio = new Audio(musicUrl);
     audio.loop = true;
-    audio.volume = 0.35; // Gentle, elegant acoustic volume
+    audio.volume = 0.4;
     audio.preload = "auto";
     audioRef.current = audio;
 
@@ -40,7 +42,19 @@ export function useBackgroundMusic(): BackgroundMusicState {
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
 
-    // Browser policy: audio cannot play until user has made at least one gesture
+    // 1. Attempt immediate autoplay on initial landing
+    if (!userMutedRef.current) {
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          // Browser requires user gesture before allowing audio playback
+        });
+    }
+
+    // 2. Unlock immediately on first touch, click, scroll or keypress
     const unlockAndPlay = () => {
       if (userMutedRef.current) return;
       if (audioRef.current && audioRef.current.paused) {
@@ -50,16 +64,22 @@ export function useBackgroundMusic(): BackgroundMusicState {
             setIsPlaying(true);
           })
           .catch(() => {
-            // Browser still awaiting explicit gesture
+            // Still waiting for gesture
           });
       }
     };
 
-    window.addEventListener("pointerdown", unlockAndPlay, { once: true });
-    window.addEventListener("keydown", unlockAndPlay, { once: true });
+    window.addEventListener("pointerdown", unlockAndPlay, { once: true, passive: true });
+    window.addEventListener("touchstart", unlockAndPlay, { once: true, passive: true });
+    window.addEventListener("click", unlockAndPlay, { once: true, passive: true });
+    window.addEventListener("scroll", unlockAndPlay, { once: true, passive: true });
+    window.addEventListener("keydown", unlockAndPlay, { once: true, passive: true });
 
     return () => {
       window.removeEventListener("pointerdown", unlockAndPlay);
+      window.removeEventListener("touchstart", unlockAndPlay);
+      window.removeEventListener("click", unlockAndPlay);
+      window.removeEventListener("scroll", unlockAndPlay);
       window.removeEventListener("keydown", unlockAndPlay);
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
@@ -68,36 +88,45 @@ export function useBackgroundMusic(): BackgroundMusicState {
     };
   }, []);
 
-  const toggleMusic = useCallback(() => {
+  const playMusic = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
-    if (isPlaying) {
-      audio.pause();
-      userMutedRef.current = true;
-      try {
-        sessionStorage.setItem("wedding_music_muted", "true");
-      } catch {
-        // Fallback
-      }
-      setIsPlaying(false);
-    } else {
-      userMutedRef.current = false;
-      try {
-        sessionStorage.removeItem("wedding_music_muted");
-      } catch {
-        // Fallback
-      }
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch((err) => {
-          console.warn("[BackgroundMusic] Playback prevented:", err);
-        });
+    userMutedRef.current = false;
+    try {
+      sessionStorage.removeItem("wedding_music_muted");
+    } catch {
+      // Fallback
     }
-  }, [isPlaying]);
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch((err) => {
+        console.warn("[BackgroundMusic] Playback prevented:", err);
+      });
+  }, []);
 
-  return { isPlaying, toggleMusic };
+  const pauseMusic = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.pause();
+    userMutedRef.current = true;
+    try {
+      sessionStorage.setItem("wedding_music_muted", "true");
+    } catch {
+      // Fallback
+    }
+    setIsPlaying(false);
+  }, []);
+
+  const toggleMusic = useCallback(() => {
+    if (isPlaying) {
+      pauseMusic();
+    } else {
+      playMusic();
+    }
+  }, [isPlaying, pauseMusic, playMusic]);
+
+  return { isPlaying, toggleMusic, playMusic, pauseMusic };
 }

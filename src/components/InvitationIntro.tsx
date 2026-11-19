@@ -7,11 +7,13 @@ import { ChevronDown, Sparkles } from "lucide-react";
 interface InvitationIntroProps {
   onComplete: () => void;
   prefersReducedMotion: boolean;
+  onUserGesture?: () => void;
 }
 
 export const InvitationIntro: React.FC<InvitationIntroProps> = ({
   onComplete,
   prefersReducedMotion,
+  onUserGesture,
 }) => {
   const [stage, setStage] = useState<number>(1);
   const [isOpening, setIsOpening] = useState<boolean>(false);
@@ -44,12 +46,14 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
   }, [isOpening]);
 
   const handleOpenEnvelope = () => {
+    onUserGesture?.();
     if (stage === 1) {
       setIsOpening(true);
     }
   };
 
   const handleSkip = () => {
+    onUserGesture?.();
     try {
       sessionStorage.setItem("wedding_intro_seen", "true");
     } catch {
@@ -62,6 +66,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
   };
 
   const handleFinishAndExplore = () => {
+    onUserGesture?.();
     try {
       sessionStorage.setItem("wedding_intro_seen", "true");
     } catch {

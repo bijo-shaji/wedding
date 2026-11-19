@@ -154,6 +154,6 @@ export const EVENT_CONFIG: EventDetails = {
     enableRosePetals: true,
     showGuestInquiry: false,
     enableBackgroundMusic: true,
-    backgroundMusicUrl: "/audio/wedding-melody.mp3",
+    backgroundMusicUrl: "/audio/golden-brown.mp3",
   },
 };

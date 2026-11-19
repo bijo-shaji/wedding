@@ -16,7 +16,11 @@ import { Footer } from "./components/Footer";
 
 export const App: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
-  const { isPlaying: isPlayingMusic, toggleMusic: handleToggleMusic } = useBackgroundMusic();
+  const {
+    isPlaying: isPlayingMusic,
+    toggleMusic: handleToggleMusic,
+    playMusic: handlePlayMusic,
+  } = useBackgroundMusic();
 
   const [showIntro, setShowIntro] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
@@ -57,6 +61,7 @@ export const App: React.FC = () => {
         <InvitationIntro
           onComplete={handleIntroComplete}
           prefersReducedMotion={prefersReducedMotion}
+          onUserGesture={handlePlayMusic}
         />
       )}
 
