@@ -83,8 +83,8 @@ export const App: React.FC = () => {
         {/* Section F: Venues & Directions */}
         <VenuesSection />
 
-        {/* Section G: Guest Assistance / Enquiry Form */}
-        <GuestInquiry />
+        {/* Section G: Guest Assistance / Enquiry Form (Hidden when showGuestInquiry is false) */}
+        {EVENT_CONFIG.features.showGuestInquiry && <GuestInquiry />}
       </main>
 
       {/* Section I & J: Final Blessing & Copyright Footer */}

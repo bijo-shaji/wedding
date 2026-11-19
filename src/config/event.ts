@@ -76,6 +76,7 @@ export interface EventDetails {
     showCouplePhoto: boolean;
     couplePhotoUrl?: string;
     enableRosePetals: boolean;
+    showGuestInquiry: boolean;
   };
 }
 
@@ -149,5 +150,6 @@ export const EVENT_CONFIG: EventDetails = {
     showCouplePhoto: true,
     couplePhotoUrl: "/images/sheba-kenneth.jpg",
     enableRosePetals: true,
+    showGuestInquiry: false,
   },
 };

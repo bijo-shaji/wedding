@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Sparkles, Film, MessageCircle } from "lucide-react";
+import { EVENT_CONFIG } from "../config/event";
 
 interface NavbarProps {
   onReplayIntro: () => void;
@@ -29,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { label: "Engagement", href: "#engagement" },
     { label: "Wedding", href: "#wedding" },
     { label: "Venues", href: "#venues" },
-    { label: "Contact", href: "#contact" },
+    ...(EVENT_CONFIG.features.showGuestInquiry ? [{ label: "Contact", href: "#contact" }] : []),
   ];
 
   const handleNavClick = (href: string) => {
