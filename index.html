@@ -38,8 +38,45 @@
 
     <!-- Cloudflare Turnstile explicit rendering script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+
+    <!-- Immediate Audio Preload -->
+    <link rel="preload" as="fetch" href="/audio/wedding-melody.mp3" crossorigin />
   </head>
   <body class="bg-ivory-100 text-[#2B2625] antialiased selection:bg-gold-200 selection:text-burgundy-900 overflow-x-hidden min-h-screen">
+    <!-- Pre-buffered Instant Audio Element -->
+    <audio id="wedding-audio" src="/audio/wedding-melody.mp3" preload="auto" loop playsinline></audio>
+    <script>
+      (function () {
+        try {
+          var audio = document.getElementById("wedding-audio");
+          if (!audio) return;
+          audio.volume = 0.45;
+          audio.currentTime = 0;
+
+          function startImmediateAudio() {
+            try {
+              if (sessionStorage.getItem("wedding_music_muted") === "true") return;
+              if (audio.paused) {
+                var p = audio.play();
+                if (p !== undefined) {
+                  p.catch(function () {});
+                }
+              }
+            } catch (e) {}
+          }
+
+          // Trigger on initial HTML execution
+          startImmediateAudio();
+
+          // Unlock on absolute first touch, click, scroll or keypress
+          var events = ["pointerdown", "touchstart", "click", "scroll", "keydown"];
+          events.forEach(function (evt) {
+            window.addEventListener(evt, startImmediateAudio, { once: true, passive: true });
+          });
+        } catch (err) {}
+      })();
+    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

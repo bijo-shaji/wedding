@@ -10,9 +10,8 @@ export interface BackgroundMusicState {
 }
 
 /**
- * Background melody player hook for romantic wedding piano tune.
- * Defaults to ON so the music starts playing immediately when opening the link
- * or upon the very first touch/click, rewinding to 0:00 on every refresh.
+ * Background melody player hook for romantic wedding piano & cello tune.
+ * Reuses the preloaded audio element from index.html for zero latency / zero lag.
  */
 export function useBackgroundMusic(): BackgroundMusicState {
   // Always default to true (ON) unless user has explicitly muted in session
@@ -40,17 +39,17 @@ export function useBackgroundMusic(): BackgroundMusicState {
     }
     userMutedRef.current = isMutedInSession;
 
+    // Connect to preloaded audio in index.html for instant 0-second start
+    const existingAudio = document.getElementById("wedding-audio") as HTMLAudioElement | null;
     const musicUrl = EVENT_CONFIG.features.backgroundMusicUrl || "/audio/wedding-melody.mp3";
-    const audio = new Audio(musicUrl);
+    const audio = existingAudio || new Audio(musicUrl);
     audio.loop = true;
     audio.volume = 0.45;
     audio.preload = "auto";
-    audio.currentTime = 0; // Always start from the very beginning
     audioRef.current = audio;
 
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => {
-      // Only set isPlaying false if paused due to user action or explicit stop
       if (userMutedRef.current) {
         setIsPlaying(false);
       }
@@ -59,8 +58,10 @@ export function useBackgroundMusic(): BackgroundMusicState {
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
 
-    // 1. Immediately attempt autoplay on initial page landing
-    if (!userMutedRef.current) {
+    // If audio is already playing from the preloader, sync state
+    if (!audio.paused) {
+      setIsPlaying(true);
+    } else if (!userMutedRef.current) {
       const playPromise = audio.play();
       if (playPromise !== undefined) {
         playPromise
@@ -68,13 +69,12 @@ export function useBackgroundMusic(): BackgroundMusicState {
             setIsPlaying(true);
           })
           .catch(() => {
-            // If browser policy holds audio pending user gesture,
-            // unlock on the first interaction while keeping state ON
+            // Unlocks on first gesture
           });
       }
     }
 
-    // 2. Unlock immediately on first touch, click, scroll or keypress
+    // Instant unlock on first touch, click, scroll or keypress
     const unlockAndPlay = () => {
       if (userMutedRef.current) return;
       if (audioRef.current && audioRef.current.paused) {
@@ -101,8 +101,6 @@ export function useBackgroundMusic(): BackgroundMusicState {
       window.removeEventListener("keydown", unlockAndPlay);
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
-      audio.pause();
-      audioRef.current = null;
     };
   }, []);
 
@@ -153,9 +151,7 @@ export function useBackgroundMusic(): BackgroundMusicState {
       .then(() => {
         setIsPlaying(true);
       })
-      .catch(() => {
-        // Will unlock on first user gesture
-      });
+      .catch(() => {});
   }, []);
 
   const toggleMusic = useCallback(() => {
