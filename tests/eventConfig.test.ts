@@ -52,6 +52,6 @@ describe("Official Event Details & Integrity", () => {
 
   it("configures background wedding melody properly", () => {
     expect(EVENT_CONFIG.features.enableBackgroundMusic).toBe(true);
-    expect(EVENT_CONFIG.features.backgroundMusicUrl).toBe("/audio/golden-brown.mp3");
+    expect(EVENT_CONFIG.features.backgroundMusicUrl).toBe("/audio/wedding-melody.mp3");
   });
 });

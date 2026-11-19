@@ -10,12 +10,21 @@ export interface BackgroundMusicState {
 }
 
 /**
- * Background melody player hook for Golden Brown (Slowed Tune).
- * Starts playback immediately on the landing envelope screen or first touch/click,
- * and resets to the beginning on every page refresh or intro replay.
+ * Background melody player hook for romantic wedding piano tune.
+ * Defaults to ON so the music starts playing immediately when opening the link
+ * or upon the very first touch/click, rewinding to 0:00 on every refresh.
  */
 export function useBackgroundMusic(): BackgroundMusicState {
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  // Always default to true (ON) unless user has explicitly muted in session
+  const [isPlaying, setIsPlaying] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true;
+    try {
+      return sessionStorage.getItem("wedding_music_muted") !== "true";
+    } catch {
+      return true;
+    }
+  });
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const userMutedRef = useRef<boolean>(false);
 
@@ -31,33 +40,41 @@ export function useBackgroundMusic(): BackgroundMusicState {
     }
     userMutedRef.current = isMutedInSession;
 
-    const musicUrl = EVENT_CONFIG.features.backgroundMusicUrl || "/audio/golden-brown.mp3";
+    const musicUrl = EVENT_CONFIG.features.backgroundMusicUrl || "/audio/wedding-melody.mp3";
     const audio = new Audio(musicUrl);
     audio.loop = true;
     audio.volume = 0.45;
     audio.preload = "auto";
-    audio.currentTime = 0; // Always start from 0:00 on fresh page load
+    audio.currentTime = 0; // Always start from the very beginning
     audioRef.current = audio;
 
     const handlePlay = () => setIsPlaying(true);
-    const handlePause = () => setIsPlaying(false);
+    const handlePause = () => {
+      // Only set isPlaying false if paused due to user action or explicit stop
+      if (userMutedRef.current) {
+        setIsPlaying(false);
+      }
+    };
 
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
 
-    // 1. Attempt immediate autoplay on initial landing
+    // 1. Immediately attempt autoplay on initial page landing
     if (!userMutedRef.current) {
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch(() => {
-          // Awaiting user gesture
-        });
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            // If browser policy holds audio pending user gesture,
+            // unlock on the first interaction while keeping state ON
+          });
+      }
     }
 
-    // 2. Unlock immediately on the very first touch, pointerdown, click or scroll
+    // 2. Unlock immediately on first touch, click, scroll or keypress
     const unlockAndPlay = () => {
       if (userMutedRef.current) return;
       if (audioRef.current && audioRef.current.paused) {
@@ -66,17 +83,15 @@ export function useBackgroundMusic(): BackgroundMusicState {
           .then(() => {
             setIsPlaying(true);
           })
-          .catch(() => {
-            // Awaiting explicit user click
-          });
+          .catch(() => {});
       }
     };
 
-    window.addEventListener("pointerdown", unlockAndPlay, { once: true, passive: true });
-    window.addEventListener("touchstart", unlockAndPlay, { once: true, passive: true });
-    window.addEventListener("click", unlockAndPlay, { once: true, passive: true });
-    window.addEventListener("scroll", unlockAndPlay, { once: true, passive: true });
-    window.addEventListener("keydown", unlockAndPlay, { once: true, passive: true });
+    window.addEventListener("pointerdown", unlockAndPlay, { passive: true });
+    window.addEventListener("touchstart", unlockAndPlay, { passive: true });
+    window.addEventListener("click", unlockAndPlay, { passive: true });
+    window.addEventListener("scroll", unlockAndPlay, { passive: true });
+    window.addEventListener("keydown", unlockAndPlay, { passive: true });
 
     return () => {
       window.removeEventListener("pointerdown", unlockAndPlay);
@@ -139,7 +154,7 @@ export function useBackgroundMusic(): BackgroundMusicState {
         setIsPlaying(true);
       })
       .catch(() => {
-        // Will be triggered by gesture
+        // Will unlock on first user gesture
       });
   }, []);
 

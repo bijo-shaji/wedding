@@ -90,6 +90,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
         key="envelope-intro-modal"
         initial={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
+        onClick={onUserGesture}
         className="fixed inset-0 z-50 flex items-center justify-center bg-[#FAF4E9] overflow-hidden px-4 select-none"
         style={{
           backgroundImage:
