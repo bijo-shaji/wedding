@@ -55,6 +55,9 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
     } catch {
       // Ignore in restricted environments
     }
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
     onComplete();
   };
 
@@ -63,6 +66,9 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
       sessionStorage.setItem("wedding_intro_seen", "true");
     } catch {
       // Ignore
+    }
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
     onComplete();
   };

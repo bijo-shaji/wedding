@@ -61,8 +61,8 @@ export const Wedding: React.FC = () => {
         <div className="absolute inset-0 bg-white/35 backdrop-blur-[1px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          {/* Frosted Royal Header Plaque for cathedral ceremony */}
-          <div className="bg-white/85 backdrop-blur-md px-6 py-5 sm:px-10 sm:py-6 rounded-2xl border border-gold-300/70 shadow-sm mb-6 max-w-xl flex flex-col items-center">
+          {/* Frosted Royal Header Plaque for cathedral ceremony (matching width with parents section below) */}
+          <div className="w-full max-w-3xl bg-white/85 backdrop-blur-md px-6 py-6 sm:px-10 sm:py-7 rounded-2xl border border-gold-300/70 shadow-sm mb-6 flex flex-col items-center">
             <GoldenCross size={44} className="mb-2" />
 
             <span className="inline-block px-4 py-1 rounded-full text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.2em] text-burgundy-900 bg-burgundy-50/80 border border-gold-300/60 uppercase mb-2">

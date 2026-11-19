@@ -28,8 +28,8 @@ export const Reception: React.FC = () => {
         <div className="absolute inset-0 bg-white/35 backdrop-blur-[1px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          {/* Frosted Royal Header Plaque */}
-          <div className="bg-white/85 backdrop-blur-md px-6 py-4 sm:px-8 sm:py-5 rounded-2xl border border-gold-300/70 shadow-sm mb-6 max-w-xl flex flex-col items-center">
+          {/* Frosted Royal Header Plaque (matching width with venue section below) */}
+          <div className="w-full max-w-3xl bg-white/85 backdrop-blur-md px-6 py-5 sm:px-10 sm:py-6 rounded-2xl border border-gold-300/70 shadow-sm mb-6 flex flex-col items-center">
             <div className="flex items-center gap-1.5 text-gold-600 mb-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span className="font-cinzel text-[11px] sm:text-xs uppercase tracking-[0.2em] font-bold text-burgundy-900">
@@ -49,13 +49,13 @@ export const Reception: React.FC = () => {
               {EVENT_CONFIG.reception.timeFormatted}
             </div>
 
-            <p className="font-serif italic text-sm sm:text-base text-burgundy-900 font-medium">
+            <p className="font-serif italic text-sm sm:text-base text-burgundy-900 font-medium max-w-xl">
               Please join us for dinner and fellowship as we celebrate the newlyweds immediately following the Holy Matrimony service.
             </p>
           </div>
 
-          {/* Venue Card in Contrast Panel */}
-          <div className="w-full max-w-md bg-white/95 rounded-2xl border border-gold-300/80 p-5 sm:p-7 mb-7 shadow-md flex flex-col items-center hover:border-gold-500 hover:shadow-xl transition-all duration-300">
+          {/* Venue Card in Contrast Panel (matching max-w-3xl width) */}
+          <div className="w-full max-w-3xl bg-white/95 rounded-2xl border border-gold-300/80 p-5 sm:p-7 mb-7 shadow-md flex flex-col items-center hover:border-gold-500 hover:shadow-xl transition-all duration-300">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-burgundy-50 border border-burgundy-200 flex items-center justify-center text-burgundy-700 mb-3">
               <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>

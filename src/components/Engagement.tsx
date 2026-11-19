@@ -60,8 +60,8 @@ export const Engagement: React.FC = () => {
         <div className="absolute inset-0 bg-white/35 backdrop-blur-[1px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          {/* Frosted Royal Header Plaque for pristine text legibility */}
-          <div className="bg-white/85 backdrop-blur-md px-6 py-4 sm:px-8 sm:py-5 rounded-2xl border border-gold-300/70 shadow-sm mb-6 max-w-xl flex flex-col items-center">
+          {/* Frosted Royal Header Plaque for pristine text legibility (matching width with details grid below) */}
+          <div className="w-full max-w-3xl bg-white/85 backdrop-blur-md px-6 py-5 sm:px-10 sm:py-6 rounded-2xl border border-gold-300/70 shadow-sm mb-6 flex flex-col items-center">
             <span className="inline-block px-4 py-1 rounded-full text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.2em] text-burgundy-900 bg-burgundy-50/80 border border-gold-300/60 uppercase mb-2">
               The Engagement Ceremony
             </span>
@@ -72,7 +72,7 @@ export const Engagement: React.FC = () => {
 
             <GoldDivider className="my-2.5" />
 
-            <p className="font-serif italic text-sm sm:text-base text-burgundy-900 font-medium">
+            <p className="font-serif italic text-sm sm:text-base text-burgundy-900 font-medium max-w-xl">
               Join us as we pledge our love, exchange sacred promises, and celebrate the union of our two families.
             </p>
           </div>

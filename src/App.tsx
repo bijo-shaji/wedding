@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { EVENT_CONFIG } from "./config/event";
 import { useReducedMotion } from "./hooks/useReducedMotion";
 import { InvitationIntro } from "./components/InvitationIntro";
@@ -28,11 +28,27 @@ export const App: React.FC = () => {
     EVENT_CONFIG.features.enableRosePetals && !prefersReducedMotion
   );
 
+  // Always reset scroll to the beginning after page reload / refresh
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   const handleIntroComplete = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
     setShowIntro(false);
   };
 
   const handleReplayIntro = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
     setShowIntro(true);
   };
 
