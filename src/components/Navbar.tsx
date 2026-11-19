@@ -50,9 +50,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
-        scrolled ? "nav-glass shadow-sm py-2.5" : "bg-transparent py-4"
-      }`}
+      className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${scrolled ? "nav-glass shadow-sm py-2.5" : "bg-transparent py-4"
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Logo / Monogram */}
@@ -118,11 +117,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onTogglePetals}
             aria-label="Toggle floating petals"
             title="Toggle floating petals"
-            className={`p-2 rounded-full transition-colors border ${
-              showPetals
+            className={`p-2 rounded-full transition-colors border ${showPetals
                 ? "bg-blush-100/90 text-burgundy-800 border-blush-300"
                 : "text-slate-400 border-transparent hover:text-slate-600"
-            }`}
+              }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
           </button>
@@ -182,11 +180,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onTogglePetals}
-                className={`px-3 py-1 rounded-full text-xs font-cinzel font-bold uppercase tracking-wider transition-colors ${
-                  showPetals
+                className={`px-3 py-1 rounded-full text-xs font-cinzel font-bold uppercase tracking-wider transition-colors ${showPetals
                     ? "bg-burgundy-700 text-ivory-100"
                     : "bg-slate-200 text-slate-600"
-                }`}
+                  }`}
               >
                 {showPetals ? "On" : "Off"}
               </button>

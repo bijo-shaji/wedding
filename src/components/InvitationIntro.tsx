@@ -140,14 +140,24 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                 transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="w-full h-full border border-gold-400/40 rounded-lg p-3 flex flex-col items-center justify-center bg-white/60 backdrop-blur-xs">
-                  <GoldenCross size={28} className="mb-2" />
-                  <p className="font-cinzel text-[10px] tracking-widest text-gold-700 uppercase font-semibold mb-1">
+                  {EVENT_CONFIG.features.couplePhotoUrl ? (
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold-400 shadow-xs mb-1.5">
+                      <img
+                        src={EVENT_CONFIG.features.couplePhotoUrl}
+                        alt="Sheba & Kenneth"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  ) : (
+                    <GoldenCross size={28} className="mb-2" />
+                  )}
+                  <p className="font-cinzel text-[10px] tracking-widest text-gold-700 uppercase font-semibold mb-0.5">
                     Wedding &amp; Engagement
                   </p>
-                  <h3 className="font-script text-3xl sm:text-4xl text-burgundy-800 leading-none">
+                  <h3 className="font-script text-2xl sm:text-3xl text-burgundy-800 leading-none">
                     Sheba &amp; Kenneth
                   </h3>
-                  <p className="font-cinzel text-[10px] tracking-widest text-sage-600 mt-2 uppercase font-semibold">
+                  <p className="font-cinzel text-[9px] tracking-widest text-sage-600 mt-1 uppercase font-semibold">
                     January 2027 • Kerala, India
                   </p>
                 </div>
@@ -290,7 +300,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.7 }}
-                  className="font-script text-4xl sm:text-5xl text-burgundy-800 leading-tight drop-shadow-xs"
+                  className="font-script text-3xl sm:text-4xl text-burgundy-800 leading-tight drop-shadow-xs"
                 >
                   {EVENT_CONFIG.couple.bride.fullName}
                 </motion.h1>
@@ -299,7 +309,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.7, duration: 0.5 }}
-                  className="font-serif italic text-2xl text-gold-600 my-1 font-bold"
+                  className="font-serif italic text-xl text-gold-600 my-0.5 font-bold"
                 >
                   &amp;
                 </motion.span>
@@ -308,11 +318,27 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9, duration: 0.7 }}
-                  className="font-script text-4xl sm:text-5xl text-burgundy-800 leading-tight drop-shadow-xs"
+                  className="font-script text-3xl sm:text-4xl text-burgundy-800 leading-tight drop-shadow-xs"
                 >
                   {EVENT_CONFIG.couple.groom.fullName}
                 </motion.h1>
               </div>
+
+              {/* Couple Portrait in the Reveal Card */}
+              {EVENT_CONFIG.features.couplePhotoUrl && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.88 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.0, duration: 0.6 }}
+                  className="my-3 relative w-28 h-36 sm:w-32 sm:h-40 rounded-t-full rounded-b-[50px] overflow-hidden border-2 border-gold-400 shadow-md"
+                >
+                  <img
+                    src={EVENT_CONFIG.features.couplePhotoUrl}
+                    alt="Sheba & Kenneth"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </motion.div>
+              )}
 
               {/* Family Message & Explore CTA */}
               <motion.div

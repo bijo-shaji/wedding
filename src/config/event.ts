@@ -146,8 +146,8 @@ export const EVENT_CONFIG: EventDetails = {
     contactEmailText: "Private Organizer Team",
   },
   features: {
-    showCouplePhoto: false,
-    couplePhotoUrl: undefined,
+    showCouplePhoto: true,
+    couplePhotoUrl: "/images/sheba-kenneth.jpg",
     enableRosePetals: true,
   },
 };

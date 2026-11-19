@@ -14,7 +14,7 @@
     background-color: #FAF4E9;
     color: #2A2121;
     /* Luxurious Kerala Royal Wedding Damask & Ambient Golden Glows */
-    background-image: 
+    background-image:
       radial-gradient(circle at 15% 15%, rgba(215, 171, 99, 0.12) 0%, transparent 45%),
       radial-gradient(circle at 85% 25%, rgba(124, 16, 36, 0.08) 0%, transparent 50%),
       radial-gradient(circle at 50% 60%, rgba(215, 171, 99, 0.09) 0%, transparent 60%),
@@ -31,6 +31,7 @@
 }
 
 @layer utilities {
+
   /* Ultra-Luxurious Metallic Gold Shimmer */
   .gold-foil-text {
     background: linear-gradient(135deg, #A6772E 0%, #ECC480 25%, #FBF2DE 45%, #D7AB63 60%, #875816 100%);
@@ -52,7 +53,7 @@
     border: 1px solid rgba(215, 171, 99, 0.45);
     background: linear-gradient(160deg, rgba(255, 253, 249, 0.96) 0%, rgba(250, 244, 233, 0.94) 100%);
     backdrop-filter: blur(12px);
-    box-shadow: 
+    box-shadow:
       0 16px 45px -12px rgba(124, 16, 36, 0.12),
       0 6px 20px -4px rgba(215, 171, 99, 0.15),
       inset 0 0 0 1px rgba(255, 255, 255, 0.7);
@@ -102,6 +103,7 @@
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
