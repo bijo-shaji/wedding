@@ -2,18 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { GoldenCross, FloralCorner, GoldDivider } from "./FloralDecorations";
 import { EVENT_CONFIG } from "../config/event";
-import { ChevronDown, Calendar, MapPin, Heart } from "lucide-react";
+import { Calendar, MapPin, Heart } from "lucide-react";
 
 export const Hero: React.FC = () => {
-  const scrollToCelebrations = () => {
-    const el = document.getElementById("our-celebration");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <header className="relative min-h-[96vh] flex flex-col items-center justify-center pt-24 pb-16 px-4 overflow-hidden text-center select-none">
+    <header className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-12 px-4 overflow-hidden text-center select-none">
       {/* Subtle additional floral corner accents */}
       <div className="absolute top-0 left-0 pointer-events-none">
         <FloralCorner position="top-left" size={200} className="opacity-40 hidden sm:block" />
@@ -123,7 +116,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="mt-6 mb-8 flex flex-col items-center"
+          className="mt-6 flex flex-col items-center"
         >
           <p className="font-cinzel text-sm sm:text-base tracking-[0.25em] text-[#221A1A] font-bold uppercase mb-1">
             A CELEBRATION OF LOVE
@@ -142,36 +135,6 @@ export const Hero: React.FC = () => {
               Kollam, Kerala, India
             </span>
           </div>
-        </motion.div>
-
-        {/* Explore Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.8 }}
-        >
-          <button
-            onClick={scrollToCelebrations}
-            type="button"
-            className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-burgundy-700 via-burgundy-800 to-burgundy-900 text-ivory-100 font-cinzel text-xs tracking-widest uppercase font-semibold shadow-lg hover:shadow-2xl hover:from-burgundy-600 hover:to-burgundy-800 transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-gold-400"
-          >
-            <span>Explore Celebrations</span>
-            <ChevronDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5 text-gold-300" />
-          </button>
-        </motion.div>
-      </div>
-
-      {/* Downward Scroll Cue */}
-      <div className="absolute bottom-4 inset-x-0 flex justify-center pointer-events-none">
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center text-gold-600 opacity-80"
-        >
-          <span className="font-cinzel text-[10px] tracking-widest uppercase mb-1 font-semibold">
-            Scroll Down
-          </span>
-          <ChevronDown className="w-4 h-4" />
         </motion.div>
       </div>
     </header>
