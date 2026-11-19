@@ -41,7 +41,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#FAF4E9] text-[#2A2121] overflow-x-hidden selection:bg-blush-200 selection:text-burgundy-900">
+    <div className="relative min-h-screen bg-transparent text-[#2A2121] overflow-x-hidden selection:bg-blush-200 selection:text-burgundy-900">
       {/* Cinematic Invitation Intro Modal (Envelope Opening without 'Tap to open' text badge) */}
       {showIntro && (
         <InvitationIntro

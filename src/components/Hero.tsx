@@ -14,12 +14,12 @@ export const Hero: React.FC = () => {
 
   return (
     <header className="relative min-h-[96vh] flex flex-col items-center justify-center pt-24 pb-16 px-4 overflow-hidden text-center select-none">
-      {/* Decorative Floral Corners for the Hero section */}
+      {/* Subtle additional floral corner accents */}
       <div className="absolute top-0 left-0 pointer-events-none">
-        <FloralCorner position="top-left" size={240} className="opacity-90" />
+        <FloralCorner position="top-left" size={200} className="opacity-40 hidden sm:block" />
       </div>
       <div className="absolute top-0 right-0 pointer-events-none">
-        <FloralCorner position="top-right" size={240} className="opacity-90" />
+        <FloralCorner position="top-right" size={200} className="opacity-40 hidden sm:block" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
