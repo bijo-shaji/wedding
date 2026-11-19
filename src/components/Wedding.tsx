@@ -61,29 +61,30 @@ export const Wedding: React.FC = () => {
         <div className="absolute inset-0 bg-white/35 backdrop-blur-[1px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          {/* Frosted Royal Header Plaque for cathedral ceremony (matching width with parents section below) */}
-          <div className="w-full max-w-3xl bg-white/85 backdrop-blur-md px-6 py-6 sm:px-10 sm:py-7 rounded-2xl border border-gold-300/70 shadow-sm mb-6 flex flex-col items-center">
-            <GoldenCross size={44} className="mb-2" />
+          {/* Frosted Royal Header Plaque for cathedral ceremony (compact height, keeping full max-w-3xl width) */}
+          <div className="w-full max-w-3xl bg-white/85 backdrop-blur-md px-5 py-3.5 sm:px-8 sm:py-4.5 rounded-2xl border border-gold-300/70 shadow-sm mb-4 sm:mb-5 flex flex-col items-center">
+            <div className="flex items-center gap-2 mb-1">
+              <GoldenCross size={26} />
+              <span className="inline-block px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-cinzel font-bold tracking-[0.2em] text-burgundy-900 bg-burgundy-50/80 border border-gold-300/60 uppercase">
+                Sacred Nuptial Service
+              </span>
+            </div>
 
-            <span className="inline-block px-4 py-1 rounded-full text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.2em] text-burgundy-900 bg-burgundy-50/80 border border-gold-300/60 uppercase mb-2">
-              Sacred Nuptial Service
-            </span>
-
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-burgundy-950 leading-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-burgundy-950 leading-tight mb-1">
               {EVENT_CONFIG.matrimony.title}
             </h2>
 
-            <div className="my-2.5 flex flex-col items-center">
-              <h3 className="font-script text-3xl sm:text-5xl md:text-6xl text-burgundy-900 leading-tight">
+            <div className="my-1 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <h3 className="font-script text-2xl sm:text-4xl md:text-5xl text-burgundy-900 leading-none">
                 {EVENT_CONFIG.couple.bride.fullName}
               </h3>
-              <span className="font-serif italic text-2xl sm:text-3xl text-gold-600 my-0.5 font-bold">&amp;</span>
-              <h3 className="font-script text-3xl sm:text-5xl md:text-6xl text-burgundy-900 leading-tight">
+              <span className="font-serif italic text-xl sm:text-2xl text-gold-600 font-bold">&amp;</span>
+              <h3 className="font-script text-2xl sm:text-4xl md:text-5xl text-burgundy-900 leading-none">
                 {EVENT_CONFIG.couple.groom.fullName}
               </h3>
             </div>
 
-            <GoldDivider className="my-2" />
+            <GoldDivider className="my-1.5" />
           </div>
 
           {/* PARENTS COLUMNS in Solid Contrast Frame */}

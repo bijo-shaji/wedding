@@ -61,11 +61,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       const navHeight = navbar ? navbar.offsetHeight : 64;
 
       const isMobile = window.innerWidth < 768;
-      // For venues, adjust upwards so the heading and full-sized cards are completely visible
+      // Clean spacing below navbar: comfortable 10px buffer for venues so it never tucks behind navbar
       const isVenues = id === "venues";
       const buffer = isVenues
-        ? (isMobile ? -4 : -12)
-        : (isMobile ? 16 : 24);
+        ? (isMobile ? 6 : 10)
+        : (isMobile ? 14 : 20);
 
       const targetRect = targetElement.getBoundingClientRect();
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -88,9 +88,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
-        scrolled ? "nav-glass shadow-sm py-2.5" : "bg-transparent py-3.5 sm:py-4"
-      }`}
+      className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${scrolled ? "nav-glass shadow-sm py-2.5" : "bg-transparent py-3.5 sm:py-4"
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Logo / Monogram */}
@@ -117,11 +116,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={item.href}
                 type="button"
                 onClick={() => handleNavClick(item.href)}
-                className={`relative py-1 font-cinzel text-xs uppercase tracking-widest font-bold transition-all duration-200 active:scale-95 ${
-                  isActive
-                    ? "text-burgundy-900"
-                    : "text-slate-700 hover:text-burgundy-800"
-                }`}
+                className={`relative py-1 font-cinzel text-xs uppercase tracking-widest font-bold transition-all duration-200 active:scale-95 ${isActive
+                  ? "text-burgundy-900"
+                  : "text-slate-700 hover:text-burgundy-800"
+                  }`}
               >
                 <span>{item.label}</span>
                 {isActive && (
@@ -166,11 +164,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onTogglePetals}
             aria-label="Toggle floating petals"
             title="Toggle floating petals"
-            className={`p-2 rounded-full transition-colors border ${
-              showPetals
-                ? "bg-blush-100/90 text-burgundy-800 border-blush-300"
-                : "text-slate-400 border-transparent hover:text-slate-600"
-            }`}
+            className={`p-2 rounded-full transition-colors border ${showPetals
+              ? "bg-blush-100/90 text-burgundy-800 border-blush-300"
+              : "text-slate-400 border-transparent hover:text-slate-600"
+              }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
           </button>
@@ -219,11 +216,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={item.href}
                   type="button"
                   onClick={() => handleNavClick(item.href)}
-                  className={`text-left py-2.5 px-3.5 rounded-xl font-cinzel text-xs uppercase tracking-widest transition-all active:scale-98 ${
-                    isActive
-                      ? "bg-gold-100/90 text-burgundy-950 font-bold border-l-3 border-gold-500 shadow-2xs"
-                      : "text-slate-800 hover:bg-gold-50/60 hover:text-burgundy-800 font-semibold"
-                  }`}
+                  className={`text-left py-2.5 px-3.5 rounded-xl font-cinzel text-xs uppercase tracking-widest transition-all active:scale-98 ${isActive
+                    ? "bg-gold-100/90 text-burgundy-950 font-bold border-l-3 border-gold-500 shadow-2xs"
+                    : "text-slate-800 hover:bg-gold-50/60 hover:text-burgundy-800 font-semibold"
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -237,11 +233,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onTogglePetals}
-                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold uppercase tracking-wider transition-all active:scale-95 ${
-                  showPetals
-                    ? "bg-burgundy-700 text-ivory-100 shadow-xs"
-                    : "bg-slate-200 text-slate-600"
-                }`}
+                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold uppercase tracking-wider transition-all active:scale-95 ${showPetals
+                  ? "bg-burgundy-700 text-ivory-100 shadow-xs"
+                  : "bg-slate-200 text-slate-600"
+                  }`}
               >
                 {showPetals ? "On" : "Off"}
               </button>
