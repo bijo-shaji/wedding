@@ -5,7 +5,7 @@ import { Heart } from "lucide-react";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative pt-16 pb-12 px-4 overflow-hidden text-center bg-gradient-to-t from-[#F4E8D3]/50 to-transparent">
+    <footer className="relative pt-16 pb-28 sm:pb-36 px-4 overflow-hidden text-center bg-gradient-to-t from-[#F4E8D3]/50 to-transparent">
       {/* Decorative Bottom Floral Corners */}
       <div className="absolute bottom-0 left-0">
         <FloralCorner position="bottom-left" size={160} className="opacity-70" />

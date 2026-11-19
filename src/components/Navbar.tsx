@@ -52,21 +52,24 @@ export const Navbar: React.FC<NavbarProps> = ({
     const id = href.replace("#", "");
     const element = document.getElementById(id);
     if (element) {
-      const navbar = document.querySelector("nav");
-      const navHeight = navbar ? navbar.offsetHeight : 64;
-
       // Find the primary visual target: inner card (.rounded-3xl) or heading (.text-center) or the element
       const targetElement =
         (element.querySelector(".rounded-3xl") as HTMLElement) ||
         (element.querySelector(".text-center") as HTMLElement) ||
         element;
+      const navbar = document.querySelector("nav");
+      const navHeight = navbar ? navbar.offsetHeight : 64;
 
-      const elementRect = targetElement.getBoundingClientRect();
+      const isMobile = window.innerWidth < 768;
+      // For venues, adjust upwards so the heading and full-sized cards are completely visible
+      const isVenues = id === "venues";
+      const buffer = isVenues
+        ? (isMobile ? -4 : -12)
+        : (isMobile ? 16 : 24);
+
+      const targetRect = targetElement.getBoundingClientRect();
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Clean, elegant spacing below navbar (14px on mobile, 20px on desktop)
-      const topGap = window.innerWidth < 768 ? 14 : 20;
-      const targetY = elementRect.top + currentScroll - navHeight - topGap;
+      const targetY = targetRect.top + currentScroll - navHeight - buffer;
 
       window.scrollTo({
         top: Math.max(0, Math.round(targetY)),
