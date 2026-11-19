@@ -57,15 +57,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         (element.querySelector(".rounded-3xl") as HTMLElement) ||
         (element.querySelector(".text-center") as HTMLElement) ||
         element;
-      const navbar = document.querySelector("nav");
-      const navHeight = navbar ? navbar.offsetHeight : 64;
 
       const isMobile = window.innerWidth < 768;
-      // Clean spacing below navbar: comfortable 10px buffer for venues so it never tucks behind navbar
-      const isVenues = id === "venues";
-      const buffer = isVenues
-        ? (isMobile ? 6 : 10)
-        : (isMobile ? 14 : 20);
+      // Fixed collapsed navbar height (56px mobile, 64px desktop) so expanded mobile drawer never corrupts calculation
+      const navHeight = isMobile ? 56 : 64;
+      const buffer = isMobile ? 8 : 12;
 
       const targetRect = targetElement.getBoundingClientRect();
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -271,28 +267,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               );
             })}
-
-            <div className="pt-2.5 mt-1 border-t border-gold-300/30 flex items-center justify-between px-3">
-              <span className="font-cinzel text-xs text-[#3D3331] uppercase tracking-wider font-bold flex items-center gap-2">
-                {isPlayingMusic ? (
-                  <Volume2 className="w-4 h-4 text-burgundy-800 animate-pulse" />
-                ) : (
-                  <VolumeX className="w-4 h-4 text-slate-400" />
-                )}
-                Golden Brown Music
-              </span>
-              <button
-                type="button"
-                onClick={onToggleMusic}
-                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold tracking-wider transition-all active:scale-95 flex items-center gap-1.5 ${
-                  isPlayingMusic
-                    ? "bg-burgundy-800 text-gold-200 border border-gold-400 shadow-xs"
-                    : "bg-slate-200 text-slate-600 border border-slate-300"
-                }`}
-              >
-                <span>{isPlayingMusic ? "ON" : "OFF"}</span>
-              </button>
-            </div>
           </div>
         </div>
       )}
