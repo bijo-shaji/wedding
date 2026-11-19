@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sparkles, Film, MessageCircle } from "lucide-react";
+import { Menu, X, Volume2, VolumeX, Film, MessageCircle } from "lucide-react";
 import { EVENT_CONFIG } from "../config/event";
 
 interface NavbarProps {
   onReplayIntro: () => void;
-  showPetals: boolean;
-  onTogglePetals: () => void;
+  isPlayingMusic: boolean;
+  onToggleMusic: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onReplayIntro,
-  showPetals,
-  onTogglePetals,
+  isPlayingMusic,
+  onToggleMusic,
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -158,23 +158,50 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </button>
 
-          {/* Toggle Rose Petals */}
+          {/* Background Melody Play / Pause Toggle Button */}
           <button
             type="button"
-            onClick={onTogglePetals}
-            aria-label="Toggle floating petals"
-            title="Toggle floating petals"
-            className={`p-2 rounded-full transition-colors border ${showPetals
-              ? "bg-blush-100/90 text-burgundy-800 border-blush-300"
-              : "text-slate-400 border-transparent hover:text-slate-600"
-              }`}
+            onClick={onToggleMusic}
+            aria-label={isPlayingMusic ? "Turn off music" : "Turn on music"}
+            title={isPlayingMusic ? "Turn off melody" : "Turn on melody"}
+            className={`p-2 rounded-full transition-all border flex items-center gap-1.5 active:scale-95 ${
+              isPlayingMusic
+                ? "bg-gold-100/90 text-burgundy-900 border-gold-300 shadow-2xs"
+                : "bg-white/60 text-slate-400 border-gold-200/50 hover:text-burgundy-800"
+            }`}
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            {isPlayingMusic ? (
+              <Volume2 className="w-3.5 h-3.5 text-burgundy-800 animate-pulse" />
+            ) : (
+              <VolumeX className="w-3.5 h-3.5 text-slate-400" />
+            )}
+            <span className="hidden lg:inline text-[11px] tracking-wider uppercase font-bold font-cinzel">
+              {isPlayingMusic ? "Music On" : "Music Off"}
+            </span>
           </button>
         </div>
 
         {/* Mobile Controls */}
         <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Music Toggle */}
+          <button
+            type="button"
+            onClick={onToggleMusic}
+            aria-label={isPlayingMusic ? "Turn off music" : "Turn on music"}
+            title={isPlayingMusic ? "Turn off melody" : "Turn on melody"}
+            className={`p-2 rounded-full active:scale-90 transition-transform border ${
+              isPlayingMusic
+                ? "bg-gold-100 text-burgundy-900 border-gold-300 shadow-2xs"
+                : "bg-white/70 text-slate-400 border-gold-200/60"
+            }`}
+          >
+            {isPlayingMusic ? (
+              <Volume2 className="w-4 h-4 text-burgundy-800 animate-pulse" />
+            ) : (
+              <VolumeX className="w-4 h-4 text-slate-400" />
+            )}
+          </button>
+
           <button
             type="button"
             onClick={handleWhatsAppShare}
@@ -227,18 +254,24 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
 
             <div className="pt-2.5 mt-1 border-t border-gold-300/30 flex items-center justify-between px-3">
-              <span className="font-cinzel text-[11px] text-slate-700 uppercase tracking-wider font-semibold">
-                Floating Rose Petals
+              <span className="font-cinzel text-[11px] text-slate-700 uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                {isPlayingMusic ? (
+                  <Volume2 className="w-3.5 h-3.5 text-burgundy-800" />
+                ) : (
+                  <VolumeX className="w-3.5 h-3.5 text-slate-400" />
+                )}
+                Background Melody
               </span>
               <button
                 type="button"
-                onClick={onTogglePetals}
-                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold uppercase tracking-wider transition-all active:scale-95 ${showPetals
-                  ? "bg-burgundy-700 text-ivory-100 shadow-xs"
-                  : "bg-slate-200 text-slate-600"
-                  }`}
+                onClick={onToggleMusic}
+                className={`px-3 py-1 rounded-full text-[11px] font-cinzel font-bold uppercase tracking-wider transition-all active:scale-95 ${
+                  isPlayingMusic
+                    ? "bg-burgundy-700 text-ivory-100 shadow-xs"
+                    : "bg-slate-200 text-slate-600"
+                }`}
               >
-                {showPetals ? "On" : "Off"}
+                {isPlayingMusic ? "Playing" : "Off"}
               </button>
             </div>
           </div>

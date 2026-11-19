@@ -77,6 +77,8 @@ export interface EventDetails {
     couplePhotoUrl?: string;
     enableRosePetals: boolean;
     showGuestInquiry: boolean;
+    enableBackgroundMusic: boolean;
+    backgroundMusicUrl: string;
   };
 }
 
@@ -151,5 +153,7 @@ export const EVENT_CONFIG: EventDetails = {
     couplePhotoUrl: "/images/sheba-kenneth.jpg",
     enableRosePetals: true,
     showGuestInquiry: false,
+    enableBackgroundMusic: true,
+    backgroundMusicUrl: "/audio/wedding-melody.mp3",
   },
 };

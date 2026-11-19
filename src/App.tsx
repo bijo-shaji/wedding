@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { EVENT_CONFIG } from "./config/event";
 import { useReducedMotion } from "./hooks/useReducedMotion";
+import { useBackgroundMusic } from "./hooks/useBackgroundMusic";
 import { InvitationIntro } from "./components/InvitationIntro";
 import { Navbar } from "./components/Navbar";
 import { FloatingPetals, GoldenSparkleAura } from "./components/FloralDecorations";
@@ -15,6 +16,7 @@ import { Footer } from "./components/Footer";
 
 export const App: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
+  const { isPlaying: isPlayingMusic, toggleMusic: handleToggleMusic } = useBackgroundMusic();
 
   const [showIntro, setShowIntro] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
@@ -23,10 +25,6 @@ export const App: React.FC = () => {
     }
     return true;
   });
-
-  const [showPetals, setShowPetals] = useState<boolean>(
-    EVENT_CONFIG.features.enableRosePetals && !prefersReducedMotion
-  );
 
   // Always reset scroll to the beginning after page reload / refresh
   useEffect(() => {
@@ -52,10 +50,6 @@ export const App: React.FC = () => {
     setShowIntro(true);
   };
 
-  const handleTogglePetals = () => {
-    setShowPetals((prev) => !prev);
-  };
-
   return (
     <div className="relative min-h-screen bg-transparent text-[#2A2121] overflow-x-hidden selection:bg-blush-200 selection:text-burgundy-900">
       {/* Cinematic Invitation Intro Modal (Envelope Opening without 'Tap to open' text badge) */}
@@ -69,15 +63,15 @@ export const App: React.FC = () => {
       {/* Ambient Bokeh Atmosphere */}
       <GoldenSparkleAura />
 
-      {/* Persistent Navigation Bar with WhatsApp Share & Replay Intro */}
+      {/* Persistent Navigation Bar with WhatsApp Share, Replay Intro & Background Melody */}
       <Navbar
         onReplayIntro={handleReplayIntro}
-        showPetals={showPetals}
-        onTogglePetals={handleTogglePetals}
+        isPlayingMusic={isPlayingMusic}
+        onToggleMusic={handleToggleMusic}
       />
 
       {/* Subtle Floating Rose Petals Layer */}
-      <FloatingPetals active={showPetals && !prefersReducedMotion} />
+      <FloatingPetals active={EVENT_CONFIG.features.enableRosePetals && !prefersReducedMotion} />
 
       {/* Main Single Page Content */}
       <main className="relative z-10">

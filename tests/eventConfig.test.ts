@@ -49,4 +49,9 @@ describe("Official Event Details & Integrity", () => {
   it("has exact developer credit: Bijo Shaji", () => {
     expect(EVENT_CONFIG.organizer.creditDeveloper).toBe("Bijo Shaji");
   });
+
+  it("configures background wedding melody properly", () => {
+    expect(EVENT_CONFIG.features.enableBackgroundMusic).toBe(true);
+    expect(EVENT_CONFIG.features.backgroundMusicUrl).toBe("/audio/wedding-melody.mp3");
+  });
 });
