@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { EVENT_CONFIG } from "./config/event";
 import { useReducedMotion } from "./hooks/useReducedMotion";
+import { InvitationIntro } from "./components/InvitationIntro";
 import { Navbar } from "./components/Navbar";
 import { FloatingPetals, GoldenSparkleAura } from "./components/FloralDecorations";
 import { Hero } from "./components/Hero";
@@ -15,9 +16,25 @@ import { Footer } from "./components/Footer";
 export const App: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
 
+  const [showIntro, setShowIntro] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return false;
+    }
+    return true;
+  });
+
   const [showPetals, setShowPetals] = useState<boolean>(
     EVENT_CONFIG.features.enableRosePetals && !prefersReducedMotion
   );
+
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+  };
+
+  const handleReplayIntro = () => {
+    setShowIntro(true);
+  };
 
   const handleTogglePetals = () => {
     setShowPetals((prev) => !prev);
@@ -25,11 +42,20 @@ export const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-[#FAF4E9] text-[#2A2121] overflow-x-hidden selection:bg-blush-200 selection:text-burgundy-900">
+      {/* Cinematic Invitation Intro Modal (Envelope Opening without 'Tap to open' text badge) */}
+      {showIntro && (
+        <InvitationIntro
+          onComplete={handleIntroComplete}
+          prefersReducedMotion={prefersReducedMotion}
+        />
+      )}
+
       {/* Ambient Bokeh Atmosphere */}
       <GoldenSparkleAura />
 
-      {/* Persistent Navigation Bar with WhatsApp Share & Petal Control */}
+      {/* Persistent Navigation Bar with WhatsApp Share & Replay Intro */}
       <Navbar
+        onReplayIntro={handleReplayIntro}
         showPetals={showPetals}
         onTogglePetals={handleTogglePetals}
       />

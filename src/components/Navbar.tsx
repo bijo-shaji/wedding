@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sparkles, MessageCircle } from "lucide-react";
+import { Menu, X, Sparkles, Film, MessageCircle } from "lucide-react";
 
 interface NavbarProps {
+  onReplayIntro: () => void;
   showPetals: boolean;
   onTogglePetals: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
+  onReplayIntro,
   showPetals,
   onTogglePetals,
 }) => {
@@ -82,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           ))}
         </div>
 
-        {/* Action Controls (WhatsApp Share & Petal Toggle) */}
+        {/* Action Controls (WhatsApp Share, Replay Intro & Petal Toggle) */}
         <div className="hidden sm:flex items-center gap-2.5">
           {/* Subtle WhatsApp Share Button */}
           <button
@@ -94,6 +96,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <MessageCircle className="w-3.5 h-3.5 fill-white" />
             <span className="text-[11px] uppercase">WhatsApp</span>
+          </button>
+
+          {/* Replay Intro button */}
+          <button
+            type="button"
+            onClick={onReplayIntro}
+            aria-label="Replay invitation envelope opening"
+            title="Replay invitation envelope opening"
+            className="p-2 rounded-full text-gold-700 hover:text-burgundy-800 hover:bg-gold-100/70 transition-colors border border-transparent hover:border-gold-300/50 text-xs font-cinzel flex items-center gap-1.5"
+          >
+            <Film className="w-3.5 h-3.5" />
+            <span className="hidden lg:inline text-[11px] tracking-wider uppercase font-bold">
+              Replay Intro
+            </span>
           </button>
 
           {/* Toggle Rose Petals */}
@@ -121,6 +137,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="p-1.5 bg-[#25D366] text-white rounded-full shadow-xs"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
+          </button>
+
+          <button
+            type="button"
+            onClick={onReplayIntro}
+            aria-label="Replay intro"
+            title="Replay intro"
+            className="p-1.5 text-gold-700 hover:text-burgundy-800 rounded-lg"
+          >
+            <Film className="w-4 h-4" />
           </button>
 
           <button
