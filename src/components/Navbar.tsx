@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sparkles, Film } from "lucide-react";
+import { Menu, X, Sparkles, Film, MessageCircle } from "lucide-react";
 
 interface NavbarProps {
   onReplayIntro: () => void;
@@ -41,6 +41,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
+  const handleWhatsAppShare = () => {
+    const url = typeof window !== "undefined" ? window.location.origin : "https://shebakenneth.wedding";
+    const text = `Sheba & Kenneth — A Celebration of Love\nTogether with our families, we joyfully invite you to celebrate our Engagement (Jan 2, 2027) & Holy Matrimony (Jan 11, 2027).\n\nExplore our invitation:\n${url}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <nav
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
@@ -58,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-2 group"
           aria-label="Back to top"
         >
-          <span className="font-script text-2xl sm:text-3xl text-burgundy-700 font-bold group-hover:text-burgundy-900 transition-colors">
+          <span className="font-script text-2xl sm:text-3xl text-burgundy-800 font-bold group-hover:text-burgundy-950 transition-colors">
             Sheba &amp; Kenneth
           </span>
         </a>
@@ -70,22 +77,34 @@ export const Navbar: React.FC<NavbarProps> = ({
               key={item.href}
               type="button"
               onClick={() => handleNavClick(item.href)}
-              className="font-cinzel text-xs uppercase tracking-widest text-slate-700 hover:text-burgundy-700 transition-colors font-medium"
+              className="font-cinzel text-xs uppercase tracking-widest text-slate-800 hover:text-burgundy-800 transition-colors font-semibold"
             >
               {item.label}
             </button>
           ))}
         </div>
 
-        {/* Action Controls (Replay Intro & Petal Toggle) */}
-        <div className="hidden sm:flex items-center gap-2">
+        {/* Action Controls (WhatsApp Share, Replay Intro & Petal Toggle) */}
+        <div className="hidden sm:flex items-center gap-2.5">
+          {/* Subtle WhatsApp Share Button */}
+          <button
+            type="button"
+            onClick={handleWhatsAppShare}
+            aria-label="Share invitation on WhatsApp"
+            title="Share invitation on WhatsApp"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20BE5C] text-white text-xs font-cinzel font-bold tracking-wider shadow-xs transition-all hover:scale-105 active:scale-95"
+          >
+            <MessageCircle className="w-3.5 h-3.5 fill-white" />
+            <span className="text-[11px] uppercase">WhatsApp</span>
+          </button>
+
           {/* Replay Intro button */}
           <button
             type="button"
             onClick={onReplayIntro}
             aria-label="Replay cinematic intro"
             title="Replay cinematic intro"
-            className="p-2 rounded-full text-gold-700 hover:text-burgundy-700 hover:bg-gold-100/60 transition-colors border border-transparent hover:border-gold-300/40 text-xs font-cinzel flex items-center gap-1.5"
+            className="p-2 rounded-full text-gold-700 hover:text-burgundy-800 hover:bg-gold-100/70 transition-colors border border-transparent hover:border-gold-300/50 text-xs font-cinzel flex items-center gap-1.5"
           >
             <Film className="w-3.5 h-3.5" />
             <span className="hidden lg:inline text-[11px] tracking-wider uppercase font-semibold">
@@ -101,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="Toggle floating petals"
             className={`p-2 rounded-full transition-colors border ${
               showPetals
-                ? "bg-blush-100/80 text-burgundy-700 border-blush-300"
+                ? "bg-blush-100/90 text-burgundy-800 border-blush-300"
                 : "text-slate-400 border-transparent hover:text-slate-600"
             }`}
           >
@@ -109,14 +128,23 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Controls */}
         <div className="flex md:hidden items-center gap-2">
+          <button
+            type="button"
+            onClick={handleWhatsAppShare}
+            aria-label="Share on WhatsApp"
+            className="p-1.5 bg-[#25D366] text-white rounded-full shadow-xs"
+          >
+            <MessageCircle className="w-4 h-4 fill-white" />
+          </button>
+
           <button
             type="button"
             onClick={onReplayIntro}
             aria-label="Replay intro"
             title="Replay intro"
-            className="p-1.5 text-gold-700 hover:text-burgundy-700 rounded-lg"
+            className="p-1.5 text-gold-700 hover:text-burgundy-800 rounded-lg"
           >
             <Film className="w-4 h-4" />
           </button>
@@ -125,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
-            className="p-2 text-burgundy-800 rounded-lg hover:bg-gold-100/60 transition-colors"
+            className="p-2 text-burgundy-900 rounded-lg hover:bg-gold-100/60 transition-colors"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -141,20 +169,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={item.href}
                 type="button"
                 onClick={() => handleNavClick(item.href)}
-                className="text-left py-2 px-3 rounded-lg font-cinzel text-xs uppercase tracking-widest text-slate-800 hover:bg-gold-100/50 hover:text-burgundy-700 transition-colors"
+                className="text-left py-2 px-3 rounded-lg font-cinzel text-xs uppercase tracking-widest text-slate-800 hover:bg-gold-100/60 hover:text-burgundy-800 transition-colors font-semibold"
               >
                 {item.label}
               </button>
             ))}
 
             <div className="pt-3 border-t border-gold-300/30 flex items-center justify-between px-3">
-              <span className="font-cinzel text-xs text-slate-600 uppercase tracking-wider">
+              <span className="font-cinzel text-xs text-slate-700 uppercase tracking-wider font-semibold">
                 Floating Rose Petals
               </span>
               <button
                 type="button"
                 onClick={onTogglePetals}
-                className={`px-3 py-1 rounded-full text-xs font-cinzel font-semibold uppercase tracking-wider transition-colors ${
+                className={`px-3 py-1 rounded-full text-xs font-cinzel font-bold uppercase tracking-wider transition-colors ${
                   showPetals
                     ? "bg-burgundy-700 text-ivory-100"
                     : "bg-slate-200 text-slate-600"

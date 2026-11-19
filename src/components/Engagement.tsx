@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { EVENT_CONFIG } from "../config/event";
 import { Countdown } from "./Countdown";
 import { GoldDivider } from "./FloralDecorations";
+import { RingExchangeMotif } from "./TraditionMotifs";
 import {
   createGoogleCalendarUrl,
   downloadIcsFile,
@@ -25,7 +26,7 @@ export const Engagement: React.FC = () => {
     description: `Engagement ceremony of Sheba Shaji & Kenneth Francis at ${EVENT_CONFIG.engagement.venueName}, ${EVENT_CONFIG.engagement.locationLine}. Time: ${EVENT_CONFIG.engagement.timeFormatted}.`,
     location: EVENT_CONFIG.engagement.fullAddress,
     startIso: EVENT_CONFIG.engagement.isoDateTime,
-    defaultDurationMinutes: 180, // Documented 3 hr default window for calendar entry
+    defaultDurationMinutes: 180,
     filename: "sheba-kenneth-engagement",
   };
 
@@ -39,13 +40,17 @@ export const Engagement: React.FC = () => {
   return (
     <section
       id="engagement"
-      className="py-12 sm:py-16 px-4 max-w-4xl mx-auto scroll-mt-24"
+      className="py-14 sm:py-20 px-4 max-w-4xl mx-auto scroll-mt-24"
     >
       <div className="gold-border-card rounded-3xl p-6 sm:p-10 md:p-12 shadow-wedding relative overflow-hidden">
-        {/* Subtle decorative banner */}
         <div className="flex flex-col items-center text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-cinzel font-semibold tracking-widest text-burgundy-700 bg-burgundy-50 border border-burgundy-200 uppercase mb-3">
-            First Celebration
+          {/* Traditional Ring Exchange Motif with animated diamond glint */}
+          <div className="mb-2">
+            <RingExchangeMotif size={120} />
+          </div>
+
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-cinzel font-semibold tracking-widest text-burgundy-800 bg-burgundy-50 border border-burgundy-200 uppercase mb-2">
+            Sacred Promise &bull; മോതിരം മാറ്റൽ
           </span>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-burgundy-800 leading-tight">
@@ -54,47 +59,47 @@ export const Engagement: React.FC = () => {
 
           <GoldDivider className="my-3" />
 
-          <p className="font-serif italic text-base sm:text-lg text-[#554948] max-w-lg mb-8">
-            Join us as we celebrate the promise of love and the union of our families.
+          <p className="font-serif italic text-base sm:text-lg text-[#4E4140] max-w-lg mb-8 font-medium">
+            Join us as we exchange rings, pledge our hearts, and celebrate the union of our two families.
           </p>
 
           {/* Key Details Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl mb-8">
             {/* Date Card */}
-            <div className="flex flex-col items-center p-4 rounded-2xl bg-white/70 border border-gold-300/40 shadow-xs">
-              <div className="w-10 h-10 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-600 mb-2">
+            <div className="flex flex-col items-center p-4 rounded-2xl bg-white/80 border border-gold-300/60 shadow-xs hover:border-gold-400 transition-colors">
+              <div className="w-11 h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
                 <Calendar className="w-5 h-5" />
               </div>
-              <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider">
+              <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider font-semibold">
                 {EVENT_CONFIG.engagement.dayOfWeek}
               </span>
-              <span className="font-serif text-lg font-bold text-burgundy-800">
+              <span className="font-serif text-lg font-bold text-burgundy-900">
                 {EVENT_CONFIG.engagement.dateFormatted}
               </span>
             </div>
 
             {/* Time Card */}
-            <div className="flex flex-col items-center p-4 rounded-2xl bg-white/70 border border-gold-300/40 shadow-xs">
-              <div className="w-10 h-10 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-600 mb-2">
+            <div className="flex flex-col items-center p-4 rounded-2xl bg-white/80 border border-gold-300/60 shadow-xs hover:border-gold-400 transition-colors">
+              <div className="w-11 h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
                 <Clock className="w-5 h-5" />
               </div>
-              <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider">
+              <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider font-semibold">
                 Time
               </span>
-              <span className="font-serif text-lg font-bold text-burgundy-800">
+              <span className="font-serif text-lg font-bold text-burgundy-900">
                 {EVENT_CONFIG.engagement.timeFormatted}
               </span>
             </div>
 
             {/* Venue Card */}
-            <div className="flex flex-col items-center p-4 rounded-2xl bg-white/70 border border-gold-300/40 shadow-xs">
-              <div className="w-10 h-10 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-600 mb-2">
+            <div className="flex flex-col items-center p-4 rounded-2xl bg-white/80 border border-gold-300/60 shadow-xs hover:border-gold-400 transition-colors">
+              <div className="w-11 h-11 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 mb-2">
                 <MapPin className="w-5 h-5" />
               </div>
-              <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider">
+              <span className="font-cinzel text-xs text-slate-500 uppercase tracking-wider font-semibold">
                 Venue
               </span>
-              <span className="font-serif text-sm font-bold text-burgundy-800 text-center leading-snug">
+              <span className="font-serif text-sm font-bold text-burgundy-900 text-center leading-snug">
                 {EVENT_CONFIG.engagement.venueName}
               </span>
               <span className="font-sans text-[11px] text-slate-500 mt-0.5">
