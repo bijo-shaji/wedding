@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #FAF4E9;
+    color: #2B2625;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(215, 171, 99, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(124, 16, 36, 0.03) 0%, transparent 45%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d7ab63' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: #F3D9D8;
+    color: #640D1D;
+  }
+}
+
+@layer utilities {
+  /* Luxurious metallic gold text effect */
+  .gold-foil-text {
+    background: linear-gradient(135deg, #B88939 0%, #E8CD96 30%, #D7AB63 50%, #FAF0DF 70%, #A6772E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+  }
+
+  .burgundy-foil-text {
+    background: linear-gradient(135deg, #7C1024 0%, #A71D36 40%, #5E0B1B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Thin elegant gold border */
+  .gold-border-card {
+    position: relative;
+    border: 1px solid rgba(215, 171, 99, 0.35);
+    background: rgba(253, 250, 245, 0.94);
+    backdrop-filter: blur(8px);
+  }
+
+  .gold-border-card::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed rgba(215, 171, 99, 0.22);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Custom glassmorphism navbar */
+  .nav-glass {
+    background: rgba(250, 244, 233, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(215, 171, 99, 0.2);
+  }
+
+  /* Soft card shadows */
+  .shadow-wedding {
+    box-shadow: 0 12px 35px -8px rgba(124, 16, 36, 0.08), 0 4px 12px -2px rgba(215, 171, 99, 0.06);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
