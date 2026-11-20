@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { EVENT_CONFIG } from "../config/event";
 import { Countdown } from "./Countdown";
 import { GoldDivider } from "./FloralDecorations";
@@ -20,6 +20,22 @@ import {
 
 export const Engagement: React.FC = () => {
   const [calendarMenuOpen, setCalendarMenuOpen] = useState(false);
+  const calendarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!calendarMenuOpen) return;
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
+        setCalendarMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [calendarMenuOpen]);
 
   const engagementCalendarParams: CalendarEventParams = {
     title: `Engagement Ceremony — Sheba Shaji & Kenneth Francis`,
@@ -146,38 +162,50 @@ export const Engagement: React.FC = () => {
             </a>
 
             {/* Add to Calendar Dropdown */}
-            <div className="relative w-full sm:w-auto">
+            <div ref={calendarRef} className="relative w-full sm:w-auto">
               <button
                 type="button"
                 onClick={() => setCalendarMenuOpen((prev) => !prev)}
+                aria-expanded={calendarMenuOpen}
+                aria-haspopup="true"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-burgundy-800 border-2 border-gold-400 font-cinzel text-xs tracking-wider uppercase font-bold shadow-md transition-all active:scale-95 hover:bg-gold-50/50 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gold-400"
               >
                 <CalendarPlus className="w-4 h-4 text-gold-600" />
                 <span>Add to Calendar</span>
               </button>
 
-              {calendarMenuOpen && (
-                <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl bg-white shadow-xl border border-gold-300 p-2 z-20 text-left animate-in fade-in zoom-in-95">
-                  <a
-                    href={googleCalUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setCalendarMenuOpen(false)}
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-sans font-medium text-slate-700 hover:bg-gold-50 transition-colors"
+              <AnimatePresence>
+                {calendarMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-60 rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl border border-gold-300 p-2 z-30 text-left"
                   >
-                    <Calendar className="w-4 h-4 text-burgundy-600" />
-                    <span>Google Calendar</span>
-                  </a>
-                  <button
-                    type="button"
-                    onClick={handleDownloadIcs}
-                    className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-sans font-medium text-slate-700 hover:bg-gold-50 transition-colors"
-                  >
-                    <Download className="w-4 h-4 text-gold-600" />
-                    <span>Apple / Outlook (.ics)</span>
-                  </button>
-                </div>
-              )}
+                    <a
+                      href={googleCalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setCalendarMenuOpen(false)}
+                      className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-sans font-semibold text-slate-800 hover:bg-gold-50 hover:text-burgundy-900 transition-colors"
+                    >
+                      <Calendar className="w-4 h-4 text-burgundy-600 flex-shrink-0" />
+                      <span>Google Calendar</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={handleDownloadIcs}
+                      className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-sans font-semibold text-slate-800 hover:bg-gold-50 hover:text-burgundy-900 transition-colors"
+                    >
+                      <Download className="w-4 h-4 text-gold-600 flex-shrink-0" />
+                      <span>Apple / Outlook (.ics)</span>
+                    </button>
+                    {/* Visual downward pointer */}
+                    <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white/95 border-r border-b border-gold-300 rotate-45 pointer-events-none" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
