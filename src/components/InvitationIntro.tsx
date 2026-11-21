@@ -201,7 +201,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                     <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold-400 shadow-xs mb-1.5">
                       <img
                         src={EVENT_CONFIG.features.couplePhotoUrl}
-                        alt="Sheba & Kenneth"
+                        alt="Kenneth & Sheba"
                         className="w-full h-full object-cover object-top"
                       />
                     </div>
@@ -212,7 +212,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                     Wedding &amp; Engagement
                   </p>
                   <h3 className="font-script text-2xl sm:text-3xl text-burgundy-800 leading-none">
-                    Sheba &amp; Kenneth
+                    Kenneth &amp; Sheba
                   </h3>
                   <p className="font-cinzel text-[9px] tracking-widest text-sage-600 mt-1 uppercase font-semibold">
                     January 2027 • Kerala, India
@@ -298,7 +298,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                       <div className="absolute inset-1 rounded-full border border-gold-300/50" />
                       {/* Seal Monogram */}
                       <span className="font-cinzel text-sm font-bold text-gold-200 tracking-wider">
-                        S &amp; K
+                        K &amp; S
                       </span>
                     </div>
                   </motion.div>
@@ -355,7 +355,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                   transition={{ delay: 0.5, duration: 0.7 }}
                   className="font-script text-3xl sm:text-4xl text-burgundy-800 leading-tight drop-shadow-xs"
                 >
-                  {EVENT_CONFIG.couple.bride.fullName}
+                  {EVENT_CONFIG.couple.groom.fullName}
                 </motion.h1>
 
                 <motion.span
@@ -373,7 +373,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                   transition={{ delay: 0.9, duration: 0.7 }}
                   className="font-script text-3xl sm:text-4xl text-burgundy-800 leading-tight drop-shadow-xs"
                 >
-                  {EVENT_CONFIG.couple.groom.fullName}
+                  {EVENT_CONFIG.couple.bride.fullName}
                 </motion.h1>
               </div>
 
@@ -387,7 +387,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
                 >
                   <img
                     src={EVENT_CONFIG.features.couplePhotoUrl}
-                    alt="Sheba & Kenneth"
+                    alt="Kenneth & Sheba"
                     className="w-full h-full object-cover object-top"
                   />
                 </motion.div>
@@ -425,7 +425,7 @@ export const InvitationIntro: React.FC<InvitationIntroProps> = ({
               transition={{ delay: 0.4 }}
               className="mt-6 font-cinzel text-xs tracking-widest text-[#5E4B43] uppercase text-center font-semibold"
             >
-              A Personal Invitation from Sheba &amp; Kenneth
+              A Personal Invitation from Kenneth &amp; Sheba
             </motion.p>
           )}
         </div>

@@ -1,6 +1,6 @@
 /**
  * OFFICIAL EVENT CONFIGURATION
- * Sheba Shaji & Kenneth Francis — A Celebration of Love
+ * Kenneth Francis & Sheba Shaji — A Celebration of Love
  * 
  * All details here are official event content.
  * Timezone: Asia/Kolkata (IST = UTC+05:30)
@@ -8,7 +8,7 @@
 
 export interface EventDetails {
   couple: {
-    bride: {
+    groom: {
       firstName: string;
       fullName: string;
       parents: {
@@ -16,7 +16,7 @@ export interface EventDetails {
         mother: string;
       };
     };
-    groom: {
+    bride: {
       firstName: string;
       fullName: string;
       parents: {
@@ -84,20 +84,20 @@ export interface EventDetails {
 
 export const EVENT_CONFIG: EventDetails = {
   couple: {
+    groom: {
+      firstName: "Kenneth",
+      fullName: "Kenneth Francis",
+      parents: {
+        father: "Santhosh Pappachan (Francis Jose)",
+        mother: "Ligy Varghese",
+      },
+    },
     bride: {
       firstName: "Sheba",
       fullName: "Sheba Shaji",
       parents: {
         father: "Shaji Mathew",
         mother: "Bindhu Shaji",
-      },
-    },
-    groom: {
-      firstName: "Kenneth",
-      fullName: "Kenneth Francis",
-      parents: {
-        father: "Francis Jose",
-        mother: "Ligy Varghese",
       },
     },
   },
@@ -126,10 +126,10 @@ export const EVENT_CONFIG: EventDetails = {
     // Monday, Jan 11, 2027 11:00:00 AM IST (UTC+05:30) = 2027-01-11T05:30:00.000Z
     isoDateTime: "2027-01-11T10:30:00+05:30",
     timestampMs: new Date("2027-01-11T10:30:00+05:30").getTime(),
-    churchName: "St. Mary's Roman Catholic Cathedral",
+    churchName: "St Mary’s Cathedral Punalur",
     locationLine: "Punalur, Kollam, Kerala, India",
-    fullAddress: "St. Mary's Roman Catholic Cathedral, Punalur, Kollam, Kerala 691305, India",
-    googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=St.+Marys+Roman+Catholic+Cathedral+Punalur+Kollam+Kerala",
+    fullAddress: "St Mary’s Cathedral Punalur, Kollam, Kerala 691305, India",
+    googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=St+Marys+Cathedral+Punalur+Kollam+Kerala",
   },
   reception: {
     title: "Wedding Reception",

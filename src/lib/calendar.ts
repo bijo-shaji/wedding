@@ -64,7 +64,7 @@ export function createIcsContent(params: CalendarEventParams): string {
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Sheba and Kenneth Wedding//Official Invitation//EN",
+    "PRODID:-//Kenneth and Sheba Wedding//Official Invitation//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",

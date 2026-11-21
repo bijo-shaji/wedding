@@ -27,16 +27,16 @@ export const VENUE_LOCATIONS: Record<string, VenueLocation> = {
       "https://maps.google.com/?q=Landmark+Convention+Center+and+Auditorium,+Valakom,+Kerala+691532",
   },
   matrimony: {
-    name: "Saint Mary's Roman Catholic Cathedral",
+    name: "St Mary’s Cathedral Punalur",
     address: "Cathedral Road, Punalur",
     landmark: "Diocese of Punalur",
     city: "Kollam",
     state: "Kerala",
     pincode: "691305",
     googleMapsDirectionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=St+Marys+Roman+Catholic+Cathedral+Punalur+Kollam+Kerala",
+      "https://www.google.com/maps/dir/?api=1&destination=St+Marys+Cathedral+Punalur+Kollam+Kerala",
     googleMapsPlaceUrl:
-      "https://maps.google.com/?q=Saint+Marys+Roman+Catholic+Cathedral+Punalur+Kerala+691305",
+      "https://maps.google.com/?q=St+Marys+Cathedral+Punalur+Kerala+691305",
   },
   reception: {
     name: "K G Convention Centre",

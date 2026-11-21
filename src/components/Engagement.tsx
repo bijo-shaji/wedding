@@ -18,12 +18,12 @@ import {
 
 export const Engagement: React.FC = () => {
   const engagementCalendarParams: CalendarEventParams = {
-    title: `Engagement Ceremony — Sheba Shaji & Kenneth Francis`,
-    description: `Engagement ceremony of Sheba Shaji & Kenneth Francis at ${EVENT_CONFIG.engagement.venueName}, ${EVENT_CONFIG.engagement.locationLine}. Time: ${EVENT_CONFIG.engagement.timeFormatted}.`,
+    title: `Engagement Ceremony — Kenneth Francis & Sheba Shaji`,
+    description: `Engagement ceremony of Kenneth Francis & Sheba Shaji at ${EVENT_CONFIG.engagement.venueName}, ${EVENT_CONFIG.engagement.locationLine}. Time: ${EVENT_CONFIG.engagement.timeFormatted}.`,
     location: EVENT_CONFIG.engagement.fullAddress,
     startIso: EVENT_CONFIG.engagement.isoDateTime,
     defaultDurationMinutes: 180,
-    filename: "sheba-kenneth-engagement",
+    filename: "kenneth-sheba-engagement",
   };
 
   const googleCalUrl = createGoogleCalendarUrl(engagementCalendarParams);

@@ -8,12 +8,12 @@ import {
 
 describe("Calendar Integration Library", () => {
   const sampleParams: CalendarEventParams = {
-    title: "The Holy Matrimony — Sheba Shaji & Kenneth Francis",
-    description: "Wedding ceremony at Saint Mary's Cathedral Punalur.",
-    location: "Saint Mary's Roman Catholic Cathedral, Punalur, Kerala",
+    title: "The Holy Matrimony — Kenneth Francis & Sheba Shaji",
+    description: "Wedding ceremony at St Mary’s Cathedral Punalur.",
+    location: "St Mary’s Cathedral Punalur, Kerala",
     startIso: "2027-01-11T11:00:00+05:30",
     defaultDurationMinutes: 240,
-    filename: "sheba-kenneth-wedding",
+    filename: "kenneth-sheba-wedding",
   };
 
   it("formats dates into UTC calendar format YYYYMMDDTHHmmssZ", () => {
@@ -43,7 +43,7 @@ describe("Calendar Integration Library", () => {
     expect(ics).toContain("BEGIN:VEVENT");
     expect(ics).toContain("DTSTART:20270111T053000Z");
     expect(ics).toContain("DTEND:20270111T093000Z"); // + 240 minutes = 4 hours
-    expect(ics).toContain("SUMMARY:The Holy Matrimony — Sheba Shaji & Kenneth Francis");
+    expect(ics).toContain("SUMMARY:The Holy Matrimony — Kenneth Francis & Sheba Shaji");
     expect(ics).toContain("STATUS:CONFIRMED");
     expect(ics).toContain("END:VEVENT");
     expect(ics).toContain("END:VCALENDAR");

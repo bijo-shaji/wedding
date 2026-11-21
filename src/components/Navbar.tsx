@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const handleWhatsAppShare = () => {
     const url = typeof window !== "undefined" ? window.location.origin : "https://shebakenneth.wedding";
-    const text = `Sheba & Kenneth — A Celebration of Love\nTogether with our families, we joyfully invite you to celebrate our Engagement (Jan 2, 2027) & Holy Matrimony (Jan 11, 2027).\n\nExplore our wedding invitation:\n${url}`;
+    const text = `Kenneth & Sheba — A Celebration of Love\nTogether with our families, we joyfully invite you to celebrate our Engagement (Jan 2, 2027) & Holy Matrimony (Jan 11, 2027).\n\nExplore our wedding invitation:\n${url}`;
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
@@ -99,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           aria-label="Back to top"
         >
           <span className="font-script text-2xl sm:text-3xl text-burgundy-800 font-bold group-hover:text-burgundy-950 transition-colors">
-            Sheba &amp; Kenneth
+            Kenneth &amp; Sheba
           </span>
         </a>
 

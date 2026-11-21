@@ -3,14 +3,14 @@ import { EVENT_CONFIG } from "../src/config/event";
 
 describe("Official Event Details & Integrity", () => {
   it("has exact couple and parent names", () => {
-    expect(EVENT_CONFIG.couple.bride.fullName).toBe("Sheba Shaji");
     expect(EVENT_CONFIG.couple.groom.fullName).toBe("Kenneth Francis");
+    expect(EVENT_CONFIG.couple.bride.fullName).toBe("Sheba Shaji");
+
+    expect(EVENT_CONFIG.couple.groom.parents.father).toBe("Santhosh Pappachan (Francis Jose)");
+    expect(EVENT_CONFIG.couple.groom.parents.mother).toBe("Ligy Varghese");
 
     expect(EVENT_CONFIG.couple.bride.parents.father).toBe("Shaji Mathew");
     expect(EVENT_CONFIG.couple.bride.parents.mother).toBe("Bindhu Shaji");
-
-    expect(EVENT_CONFIG.couple.groom.parents.father).toBe("Francis Jose");
-    expect(EVENT_CONFIG.couple.groom.parents.mother).toBe("Ligy Varghese");
   });
 
   it("has exact Bible verse and reference", () => {
@@ -35,7 +35,7 @@ describe("Official Event Details & Integrity", () => {
     expect(EVENT_CONFIG.engagement.locationLine).toContain("Valakom");
 
     expect(EVENT_CONFIG.matrimony.churchName).toBe(
-      "Saint Mary's Roman Catholic Cathedral"
+      "St Mary’s Cathedral Punalur"
     );
     expect(EVENT_CONFIG.matrimony.locationLine).toContain("Punalur");
 

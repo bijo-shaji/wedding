@@ -182,7 +182,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Ensure Resend API Key is configured
   const resendApiKey = process.env.RESEND_API_KEY;
   const organizerInbox = process.env.ORGANIZER_INBOX_EMAIL;
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "Sheba & Kenneth Wedding <onboarding@resend.dev>";
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Kenneth & Sheba Wedding <onboarding@resend.dev>";
 
   if (!resendApiKey || !organizerInbox) {
     console.warn(
@@ -236,7 +236,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         <body>
           <div class="card">
             <div class="header">
-              <h1 class="title">Sheba &amp; Kenneth Wedding</h1>
+              <h1 class="title">Kenneth &amp; Sheba Wedding</h1>
               <div class="subtitle">New Guest Enquiry</div>
             </div>
             
@@ -267,7 +267,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </div>
 
             <div class="footer">
-              This message was sent securely from the Sheba &amp; Kenneth Wedding Invitation Website.<br/>
+              This message was sent securely from the Kenneth &amp; Sheba Wedding Invitation Website.<br/>
               Client IP: ${clientIp}
             </div>
           </div>

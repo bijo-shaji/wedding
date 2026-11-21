@@ -25,7 +25,7 @@ describe("Validation Library & Sanitization", () => {
       phone: "+91 98765 43210",
       email: "thomas@example.com",
       enquiryType: "wedding",
-      message: "Looking forward to celebrating with Sheba and Kenneth!",
+      message: "Looking forward to celebrating with Kenneth and Sheba!",
     };
 
     const result = guestInquirySchema.safeParse(validData);

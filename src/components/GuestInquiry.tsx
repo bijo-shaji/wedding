@@ -333,7 +333,7 @@ export const GuestInquiry: React.FC = () => {
                 className="w-full px-4 py-3 rounded-xl bg-white/90 border border-gold-300/60 text-sm font-sans text-slate-800 focus:outline-none focus:ring-2 focus:ring-gold-400"
               >
                 <option value="engagement">The Engagement (Valakom)</option>
-                <option value="wedding">The Holy Matrimony (Punalur Cathedral)</option>
+                <option value="wedding">The Holy Matrimony (St Mary’s Cathedral Punalur)</option>
                 <option value="reception">Wedding Reception (K G Convention Centre)</option>
                 <option value="other">General Directions / Other Questions</option>
               </select>
@@ -352,7 +352,7 @@ export const GuestInquiry: React.FC = () => {
                 rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Ask about route details, timings, parking, or leave a warm blessing for Sheba and Kenneth..."
+                placeholder="Ask about route details, timings, parking, or leave a warm blessing for Kenneth and Sheba..."
                 required
                 className={`w-full px-4 py-3 rounded-xl bg-white/90 border ${
                   fieldErrors.message

@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
           className="mb-6 flex flex-col items-center"
         >
           <h1 className="font-script text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-burgundy-800 leading-none drop-shadow-xs">
-            {EVENT_CONFIG.couple.bride.fullName}
+            {EVENT_CONFIG.couple.groom.fullName}
           </h1>
 
           <div className="my-2 flex items-center gap-3">
@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
           </div>
 
           <h1 className="font-script text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-burgundy-800 leading-none drop-shadow-xs">
-            {EVENT_CONFIG.couple.groom.fullName}
+            {EVENT_CONFIG.couple.bride.fullName}
           </h1>
         </motion.div>
 
@@ -94,7 +94,7 @@ export const Hero: React.FC = () => {
               <div className="relative w-[230px] h-[310px] xs:w-64 xs:h-84 sm:w-76 sm:h-100 md:w-84 md:h-110 rounded-t-full rounded-b-[125px] overflow-hidden border border-gold-300 shadow-inner">
                 <img
                   src={EVENT_CONFIG.features.couplePhotoUrl}
-                  alt="Sheba Shaji & Kenneth Francis - A Celebration of Love"
+                  alt="Kenneth Francis & Sheba Shaji - A Celebration of Love"
                   className="w-full h-full object-cover object-top transform hover:scale-105 transition-transform duration-700"
                   loading="eager"
                 />

@@ -19,12 +19,12 @@ import {
 
 export const Wedding: React.FC = () => {
   const weddingCalendarParams: CalendarEventParams = {
-    title: `Holy Matrimony — Sheba Shaji & Kenneth Francis`,
-    description: `Holy Matrimony service of Sheba Shaji & Kenneth Francis at ${EVENT_CONFIG.matrimony.churchName}, ${EVENT_CONFIG.matrimony.locationLine}. Time: ${EVENT_CONFIG.matrimony.timeFormatted}. Reception to follow at ${EVENT_CONFIG.reception.venueName}.`,
+    title: `Holy Matrimony — Kenneth Francis & Sheba Shaji`,
+    description: `Holy Matrimony service of Kenneth Francis & Sheba Shaji at ${EVENT_CONFIG.matrimony.churchName}, ${EVENT_CONFIG.matrimony.locationLine}. Time: ${EVENT_CONFIG.matrimony.timeFormatted}. Reception to follow at ${EVENT_CONFIG.reception.venueName}.`,
     location: EVENT_CONFIG.matrimony.fullAddress,
     startIso: EVENT_CONFIG.matrimony.isoDateTime,
     defaultDurationMinutes: 240,
-    filename: "sheba-kenneth-holy-matrimony",
+    filename: "kenneth-sheba-holy-matrimony",
   };
 
   const googleCalUrl = createGoogleCalendarUrl(weddingCalendarParams);
@@ -67,11 +67,11 @@ export const Wedding: React.FC = () => {
 
             <div className="my-1 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
               <h3 className="font-script text-2xl sm:text-4xl md:text-5xl text-burgundy-900 leading-none">
-                {EVENT_CONFIG.couple.bride.fullName}
+                {EVENT_CONFIG.couple.groom.fullName}
               </h3>
               <span className="font-serif italic text-xl sm:text-2xl text-gold-600 font-bold">&amp;</span>
               <h3 className="font-script text-2xl sm:text-4xl md:text-5xl text-burgundy-900 leading-none">
-                {EVENT_CONFIG.couple.groom.fullName}
+                {EVENT_CONFIG.couple.bride.fullName}
               </h3>
             </div>
 
@@ -86,21 +86,8 @@ export const Wedding: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-center">
-              {/* Bride's Parents */}
-              <div className="sm:border-r sm:border-gold-300/50 sm:pr-4 pb-3 sm:pb-0 border-b border-gold-200/50 sm:border-b-0">
-                <span className="font-cinzel text-[11px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest block mb-1">
-                  Bride&apos;s Parents
-                </span>
-                <p className="font-serif text-lg sm:text-2xl font-bold text-burgundy-950">
-                  {EVENT_CONFIG.couple.bride.parents.father}
-                </p>
-                <p className="font-serif text-lg sm:text-2xl font-bold text-burgundy-950">
-                  &amp; {EVENT_CONFIG.couple.bride.parents.mother}
-                </p>
-              </div>
-
               {/* Groom's Parents */}
-              <div className="sm:pl-4 pt-1 sm:pt-0">
+              <div className="sm:border-r sm:border-gold-300/50 sm:pr-4 pb-3 sm:pb-0 border-b border-gold-200/50 sm:border-b-0">
                 <span className="font-cinzel text-[11px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest block mb-1">
                   Groom&apos;s Parents
                 </span>
@@ -109,6 +96,19 @@ export const Wedding: React.FC = () => {
                 </p>
                 <p className="font-serif text-lg sm:text-2xl font-bold text-burgundy-950">
                   &amp; {EVENT_CONFIG.couple.groom.parents.mother}
+                </p>
+              </div>
+
+              {/* Bride's Parents */}
+              <div className="sm:pl-4 pt-1 sm:pt-0">
+                <span className="font-cinzel text-[11px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest block mb-1">
+                  Bride&apos;s Parents
+                </span>
+                <p className="font-serif text-lg sm:text-2xl font-bold text-burgundy-950">
+                  {EVENT_CONFIG.couple.bride.parents.father}
+                </p>
+                <p className="font-serif text-lg sm:text-2xl font-bold text-burgundy-950">
+                  &amp; {EVENT_CONFIG.couple.bride.parents.mother}
                 </p>
               </div>
             </div>

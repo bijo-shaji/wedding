@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
             With Love,
           </p>
           <p className="font-script text-3xl sm:text-4xl md:text-5xl text-burgundy-800 drop-shadow-xs">
-            {EVENT_CONFIG.couple.bride.firstName} &amp; {EVENT_CONFIG.couple.groom.firstName}
+            {EVENT_CONFIG.couple.groom.firstName} &amp; {EVENT_CONFIG.couple.bride.firstName}
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
         {/* Section J — Official Copyright & Developer Credit */}
         <div className="pt-6 border-t border-gold-400/35 w-full max-w-md flex flex-col items-center text-center">
           <p className="font-cinzel text-[11px] sm:text-xs text-[#524442] tracking-wider uppercase mb-1.5 font-bold">
-            &copy; 2027 Sheba &amp; Kenneth. All Rights Reserved.
+            &copy; 2027 Kenneth &amp; Sheba. All Rights Reserved.
           </p>
           <p className="font-sans text-[11px] sm:text-xs text-[#5E514F] tracking-wide flex items-center justify-center gap-1">
             <span>Designed &amp; Developed with</span>
